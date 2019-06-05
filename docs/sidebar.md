@@ -12,7 +12,7 @@
   * [Select](components/select.md)
   * [Icon](components/icon.md)
   * [Tabs](components/tabs.md)
-  * [Product](components/product.md)
+  * [Card](components/card.md)
   * [Drawer](components/drawer.md)
   * [Header](components/header.md)
   * [Switch](components/switch.md)

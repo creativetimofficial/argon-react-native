@@ -2,7 +2,7 @@
 
 This components extends [Galio](http://galio.io)'s Button component. 
 
-You will find all of our restyled buttons from material-ui in src/components/Buttons.
+You will find our restyled buttons in `src/components/Buttons`.
 
 ### Usage
 

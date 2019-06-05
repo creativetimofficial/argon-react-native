@@ -1,11 +1,11 @@
-# Product
+# Card
 
-Show off your products with this cool component! 
+Show off your products, articles and just about anything with this cool card component! 
 
 ### Usage
 Simple Example: 
 ```
-<Product product={products[0]} horizontal />
+<Card product={products[0]} horizontal />
 ```
 <p align="center">
   <img src="https://raw.githubusercontent.com/creativetimofficial/material-kit-react-native/gh-pages/assets/img/docs/product.png" width="302px" height="425px">

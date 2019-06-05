@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { Button, Block, Text, Input, theme } from 'galio-framework';
+import { Block, theme } from 'galio-framework';
 
-import { Icon, Card } from '../components';
+import { Card } from '../components';
 import articles from '../constants/articles';
-import argonTheme from "../constants/Theme";
 const { width } = Dimensions.get('screen');
 
 class Home extends React.Component {

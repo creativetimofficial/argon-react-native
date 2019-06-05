@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, Image } from 'react-native';
+import { Image } from 'react-native';
 import { AppLoading, Asset } from 'expo';
 import { Block, GalioProvider } from 'galio-framework';
 

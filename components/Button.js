@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import PropTypes from 'prop-types';
-import { Button, Text, theme } from "galio-framework";
+import { Button } from "galio-framework";
 
 import argonTheme from "../constants/Theme";
 

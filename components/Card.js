@@ -6,8 +6,6 @@ import { Block, Text, theme } from 'galio-framework';
 
 import { argonTheme } from '../constants';
 
-const { width } = Dimensions.get('screen');
-
 
 class Card extends React.Component {
   render() {

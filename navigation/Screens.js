@@ -1,16 +1,14 @@
 import React from "react";
 import { Easing, Animated } from "react-native";
 import {
-  createSwitchNavigator,
   createStackNavigator,
   createDrawerNavigator,
   createAppContainer
 } from "react-navigation";
 
-import { Block, Text } from "galio-framework";
+import { Block } from "galio-framework";
 
 // screens
-import Components from "../screens/Components";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";

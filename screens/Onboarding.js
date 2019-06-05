@@ -13,15 +13,6 @@ const { height, width } = Dimensions.get("screen");
 import argonTheme from "../constants/Theme";
 import Images from "../constants/Images";
 
-/*
-                  <Block flex center>
-          <ImageBackground
-            source={Images.Onboarding}
-            style={{ height, width, zIndex: 1 }}
-          />
-        </Block>
-*/
-
 class Onboarding extends React.Component {
   render() {
     const { navigation } = this.props;

@@ -1,0 +1,139 @@
+.opacity-3{
+  opacity: .3;
+}
+.opacity-3:hover{
+  opacity: 1 !important;
+}
+
+.section-free-demo .icon-github {
+    font-size: 82px;
+    color: #777;
+    margin-top: 80px;
+}
+
+/*nucleo blur effect*/
+
+.blur--hover
+{
+    position: relative;
+}
+.blur--hover .blur-item
+{
+    transition: 1s cubic-bezier(.19, 1, .22, 1);
+
+    opacity: 1;
+
+    will-change: transform;
+    filter: blur(0);
+}
+.blur--hover .blur-hidden
+{
+    position: absolute;
+    z-index: 100;
+    top: calc(50% + 7px);
+    left: 50%;
+
+    transition: all .15s ease;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+}
+.blur--hover:hover .blur-item
+{
+    z-index: 1;
+
+    transform: scale(.95);
+
+    opacity: .8;
+
+    filter: blur(10px);
+}
+.blur--hover:hover .blur-hidden
+{
+    top: 50%;
+
+    opacity: 1;
+}
+
+.section-nucleo-icons .icons-container{
+  margin: auto !important;
+}
+.section-nucleo-icons .icons-container i:nth-child(1)
+{
+    font-size: 42px;
+
+    top: 50%;
+    left: 50%;
+
+    color: #fb6340;
+}
+.section-nucleo-icons .icons-container i:nth-child(2)
+{
+    top: 50%;
+    left: calc(50% + (var(--gutter) * 1.7));
+}
+.section-nucleo-icons .icons-container i:nth-child(3)
+{
+    top: calc(50% + var(--gutter));
+    left: calc(50% + var(--gutter));
+}
+.section-nucleo-icons .icons-container i:nth-child(4)
+{
+    top: calc(50% - var(--gutter));
+    left: calc(50% + var(--gutter));
+}
+.section-nucleo-icons .icons-container i:nth-child(5)
+{
+    top: 50%;
+    left: calc(50% + (var(--gutter) * 4));
+}
+.section-nucleo-icons .icons-container i:nth-child(6)
+{
+    top: calc(50% + (var(--gutter) * 1.5));
+    left: calc(50% + (var(--gutter) * 2.7));
+}
+.section-nucleo-icons .icons-container i:nth-child(7)
+{
+    top: calc(50% - (var(--gutter) * 1.5));
+    left: calc(50% + (var(--gutter) * 2.7));
+}
+.section-nucleo-icons .icons-container i:nth-child(8)
+{
+    top: 50%;
+    left: calc(50% - (var(--gutter) * 1.7));
+}
+.section-nucleo-icons .icons-container i:nth-child(9)
+{
+    top: calc(50% + var(--gutter));
+    left: calc(50% - var(--gutter));
+}
+.section-nucleo-icons .icons-container i:nth-child(10)
+{
+    top: calc(50% - var(--gutter));
+    left: calc(50% - var(--gutter));
+}
+.section-nucleo-icons .icons-container i:nth-child(11)
+{
+    top: 50%;
+    left: calc(50% - (var(--gutter) * 4));
+}
+.section-nucleo-icons .icons-container i:nth-child(12)
+{
+    top: calc(50% + (var(--gutter) * 1.5));
+    left: calc(50% - (var(--gutter) * 2.7));
+}
+.section-nucleo-icons .icons-container i:nth-child(13)
+{
+    top: calc(50% - (var(--gutter) * 1.5));
+    left: calc(50% - (var(--gutter) * 2.7));
+}
+
+.navbar .dropdown-toggle:after {
+    margin-top: 0px;
+    height: 0;
+}
+
+.navbar .dropdown .dropdown-item img{
+  width: 20px;
+  margin-right: 5px;
+}

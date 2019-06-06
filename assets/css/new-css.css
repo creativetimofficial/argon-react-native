@@ -1,0 +1,439 @@
+body{
+  overflow-x: hidden;
+}
+.navbar .navbar-nav .nav-item .nav-link:not(.btn-just-icon) .fa{
+  margin-right: 0;
+}
+.navbar .navbar-nav .nav-item .nav-link{
+  margin-right: 4px;
+}
+
+.imac{
+  position: absolute;
+  z-index: 1;
+  right: -200px;
+  width: 1050px;
+  top: -170px;
+}
+.page-header{
+    background: radial-gradient(#565656 0%, #080404 100%);
+    background-size: 150% 200%;
+}
+
+.page-header .figma-logo{
+  width: 30px;
+  height: 30px;
+}
+
+.brand h1{
+  font-weight: 700;
+}
+
+.page-header .creative-tim-logo{
+  width: 120px;
+}
+.page-header::before{
+  content:"";
+  display: block;
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+}
+.page-header .container{
+  z-index: auto;
+}
+.page-header .container .col-lg-6:first-child{
+  z-index: 2;
+}
+p{
+  font-size: 16px;
+}
+
+.features-1 .col-md-6{
+  border: 1px solid hsla(0, 3%, 33%, .1);
+
+}
+
+.features-1 .col-md-6:first-child{
+  border-left: none;
+  border-top: none;
+
+}
+
+.features-1 .col-md-6:nth-child(2){
+  border-right: none;
+  border-top: none;
+
+}
+
+.features-1 .col-md-6:nth-child(3){
+  border-left: none;
+  border-bottom: none;
+
+}
+
+.features-1 .col-md-6:nth-child(4){
+  border-right: none;
+  border-bottom: none;
+
+}
+
+.section-content
+img{
+  height: auto !important;
+}
+
+.share-btn-img{
+  border-radius: 3px;
+}
+
+footer{
+  border-top: 1px solid #ddd;
+}
+
+.image-container-responsive{
+  width: 800px;
+  position: relative;
+}
+
+.image-container-responsive img{
+  width: 100%;
+  left: 100px;
+  margin-left: 100px;
+
+}
+
+.image-container-responsive .phone{
+  left: -200px;
+  width: 65%;
+  top: 100px;
+  position: absolute;
+}
+
+img.phone1{
+  position: absolute;
+  right: 0%;
+  width: 120%;
+  margin-top: 20px;
+  z-index: 3;
+}
+
+img.phone2{
+  position: absolute;
+  width: 140%;
+  right: -225px;
+  margin-top: 15px;
+  z-index: 2;
+}
+
+.shadow {
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.section-products{
+  z-index: 10;
+}
+
+.section-products img{
+  width: 100%;
+}
+
+.section-components .table-img{
+  box-shadow: none;
+  left: 15%;
+    top: 36%;
+    height: 175px;
+    border-radius: 2px;
+}
+
+.section-components .ecomm-2{
+  left: 3%;
+  top: 7%;
+  height: 100px;
+}
+.section-components .ecomm-3{
+  left: 70%;
+  top: 50%;
+  height: 250px;
+  border-radius: 2px;
+}
+
+.section-components .table-img, .section-components .ecomm-2, .section-components .coloured-card-btn-img, .section-components .ecomm-3, .section-components .social-img, .section-components .pin-btn-img {
+    position: absolute;
+}
+
+.section-examples img{
+  border-radius: 4px;
+  width: 100%;
+}
+
+.section-examples .card{
+  transition: all .2s cubic-bezier(.4,0,.2,1);
+}
+
+.section-examples .card:hover {
+  transform: translate3d(0,-10px,0);
+}
+
+.section-free-demo .icon-github{
+  font-size: 82px;
+  color: #777;
+  margin-top: 80px;
+}
+
+.section-free-demo h2.title{
+  margin-top: 15px;
+}
+
+.section-free-demo img{
+  width: 130%;
+}
+
+.our-clients{
+  margin-top: 70px;
+}
+
+.our-clients .card-featured-content img{
+  width:10%;
+  margin: 0 20px;
+}
+
+.section-pricing .card-margin{
+  margin-top: 80px;
+}
+
+.section-cards .image-container{
+  max-width: 1040px;
+  margin-top: -250px;
+  position: relative;
+}
+
+.section-cards .image-container img{
+  max-width: 1400px;
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.section-components{
+  margin-top: -150px;
+}
+.section-components .components-phone{
+  left: 140px;
+  height: 95%;
+}
+
+@media (max-width: 576px){
+  .section-cards .image-container img{
+    display: none;
+  }
+
+  .section-components .components-phone{
+    left: 100px !important;
+  }
+}
+@media (max-width:767px){
+  .features-1 .col-md-6:first-child{
+    border-left: none;
+    border-top: none;
+    border-right: none;
+
+  }
+
+  .features-1 .col-md-6:nth-child(2){
+    border-right: none;
+    border-top: none;
+    border-left: none;
+
+  }
+
+  .features-1 .col-md-6:nth-child(3){
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+
+  }
+
+  .features-1 .col-md-6:nth-child(4){
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+
+  }
+
+  .table-img{
+    max-width: 190px;
+    max-height: 60px;
+  }
+
+
+  .section-components .image-container {
+    height: 300px;
+  }
+
+
+  .components-phone{
+    max-width: 400px;
+    max-height: 240px;
+    left: 0px;
+  }
+
+  .section-components .coloured-card-img {
+  left: 30%;
+  height: 60px;
+}
+
+.image-container-responsive{
+  width: auto;
+}
+
+  .image-container-responsive img:first-child{
+      width: 30%;
+      display: none;
+  }
+
+  .image-container-responsive .phone{
+    width: 85%;
+    position: relative;
+    margin-left: 30px;
+    left: 0px;
+    top: 0px;
+  }
+
+  .section-content .image-container .area-img{
+    width: 100px;
+  }
+
+  .section-content .image-container .info-img{
+    width: 200px;
+  }
+
+  .imac{
+    display: none;
+  }
+}
+
+@media (max-width:991px) and (min-width:768px){
+  .imac{
+    display: none;
+  }
+
+  .image-container-responsive{
+    width: auto;
+  }
+
+  .image-container-responsive img{
+      width: 60%;
+  }
+
+  .image-container-responsive .phone{
+    width: 40%;
+    left: -100px;
+  }
+
+  .section-components .coloured-card-img {
+  left: 60%;
+}
+
+.section-components .social-img {
+  left: 45%;
+}
+.components-phone{
+  max-width: 700px;
+  max-height: 440px;
+  left: 0px;
+}
+}
+
+@media (max-width:991px){
+  .brand{
+    text-align: center;
+  }
+
+  .section-description{
+    text-align: center;
+  }
+
+  .section-components{
+    text-align: center;
+  }
+
+  .title{
+    text-align: center;
+  }
+
+  img.phone1, img.phone2{
+    display: none;
+  }
+
+  .section-cards .image-container img{
+    max-width: 800px;
+  }
+
+  .section-cards .image-container {
+    margin-top: -120px;
+    margin-left: -800px;
+  }
+
+  .section-components .components-phone{
+    left: 200px;
+  }
+
+  .section-components .ecomm-3{
+    left: 50%;
+  }
+
+  .section-components .ecomm-2{
+    left: 13%;
+  }
+
+  .section-components .table-img{
+    left: 22%;
+  }
+
+  .section-free-demo{
+    text-align: center;
+  }
+
+  .section-free-demo img{
+    width: 80%;
+    margin-top: 50px;
+  }
+
+  .our-clients .card-featured-content img {
+    width: 10%;
+    margin: 15px 46px;
+  }
+
+  .navbar-collapse .nav-item:last-child{
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px){
+  .section-components .components-phone {
+    left: 170px;
+  }
+
+  .section-components .ecomm-2{
+    height: 70px;
+  }
+
+  .section-components .ecomm-3{
+    height: 120px;
+  }
+
+  .section-examples{
+    padding-top: 0;
+  }
+  .shadow{
+    margin-bottom: 40px;
+  }
+
+  .card-featured-content{
+    display: none;
+  }
+}

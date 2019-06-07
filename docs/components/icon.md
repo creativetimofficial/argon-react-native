@@ -1,6 +1,6 @@
 # Icon
 
-This components extends [Galio](http://galio.io)'s Icon component. 
+This components extends [Galio](https://galio.io?ref=argonrn-docs)'s Icon component. 
 
 ### Usage
 Simple example: 

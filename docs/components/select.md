@@ -13,7 +13,7 @@ Simple Example:
 />
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/creativetimofficial/material-kit-react-native/gh-pages/assets/img/docs/dropdown.png" width="304px" height="47px">
+  <img src="http://oi63.tinypic.com/aadc1c.jpg" width="304px" height="57px">
 </p>
 
 ### Props

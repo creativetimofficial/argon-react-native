@@ -1,8 +1,8 @@
 # Button
 
-This components extends [Galio](http://galio.io)'s Button component. 
+This components extends [Galio](https://galio.io?ref=argonrn-docs)'s Button component. 
 
-You will find our restyled buttons in `src/components/Buttons`.
+You will find our restyled button in `src/components/Button`.
 
 ### Usage
 
@@ -11,8 +11,7 @@ Simple example:
 <Button>Press here!</Button>
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/creativetimofficial/material-kit-react-native/gh-pages/assets/img/docs/buttons1.png" width="244px" height="268px">
-  <img src="https://raw.githubusercontent.com/creativetimofficial/material-kit-react-native/gh-pages/assets/img/docs/buttons2.png" width="275px" height="120px">
+  <img src="../assets/buttons.png" width="244px" height="362px">
 </p>
 
 ### Props

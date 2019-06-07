@@ -11,6 +11,7 @@
   * [Button](components/button.md)
   * [Select](components/select.md)
   * [Icon](components/icon.md)
+  * [Input](components/input.md)
   * [Tabs](components/tabs.md)
   * [Card](components/card.md)
   * [Drawer](components/drawer.md)

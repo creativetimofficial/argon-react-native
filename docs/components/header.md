@@ -16,7 +16,7 @@ Simple example:
   navigation={this.props.navigation} />
 ```
 <p align="center">
-  <img src="../assets/navigation.png" width="274px" height="366px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/navigation.png" width="274px" height="366px">
 </p>
 
 

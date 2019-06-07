@@ -8,7 +8,7 @@ Simple Example:
 <Card item={articles[0]} horizontal />
 ```
 <p align="center">
-  <img src="../assets/cards.png" width="244px" height="386px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/cards.png" width="244px" height="386px">
 </p>
 
 

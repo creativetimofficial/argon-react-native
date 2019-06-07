@@ -14,7 +14,7 @@ toggleSwitch = switchId => this.setState({ [switchId]: !this.state[switchId] });
 />
 ```
 <p align="center">
-  <img src="../assets/switch.png" width="374px" height="366px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/switch.png" width="374px" height="366px">
 </p>
 
 

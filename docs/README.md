@@ -17,12 +17,12 @@ The available screens for the free version are:
 
 ## Example screenshots
 <p align="center">
-  <img src="../assets/screens/onboarding-screen.png" width="225px" height="487.2px">
-  <img src="../assets/screens/drawer-screen.png" width="225px" height="487.2px">
-  <img src="../assets/screens/profile-screen.png" width="225px" height="487.2px">
-  <img src="../assets/screens/home-screen.png" width="225px" height="487.2px">
-  <img src="../assets/screens/account-screen.png" width="225px" height="487.2px">
-  <img src="../assets/screens/components-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/onboarding-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/drawer-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/profile-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/home-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/account-screen.png" width="225px" height="487.2px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/screens/components-screen.png" width="225px" height="487.2px">
 </p>
 
 

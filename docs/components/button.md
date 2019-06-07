@@ -11,7 +11,7 @@ Simple example:
 <Button>Press here!</Button>
 ```
 <p align="center">
-  <img src="../assets/buttons.png" width="244px" height="362px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/buttons.png" width="244px" height="362px">
 </p>
 
 ### Props

@@ -14,8 +14,6 @@ The available screens for the free version are:
 * Account Screen 
 * Elements Screen
 
-Check out the PRO version for a lot more screens:
-_lista cu screenuri de PRO_
 
 ## Example screenshots
 <p align="center">

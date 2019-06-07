@@ -1,10 +1,17 @@
 {
+  "name": "argon-react-native",
+  "version": "1.0.0",
+  "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -18,5 +25,28 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
   },
-  "private": true
+  "keywords": [
+    "argon react native",
+    "argon design system",
+    "argon app react native",
+    "argon iOS",
+    "react native iOS",
+    "creative tim",
+    "argon Android",
+    "react native ui kit",
+    "react native expo",
+    "freebie",
+    "react native argon design",
+    "react native galio",
+    "galio argon free",
+    "galio react native free app",
+    "argon expo react native",
+    "react native ui template"
+  ],
+  "author": "Creative Tim <hello@creative-tim.com> (https://www.creative-tim.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/creativetimofficial/argon-react-native/issues"
+  },
+  "homepage": "https://demos.creative-tim.com/argon-react-native"
 }

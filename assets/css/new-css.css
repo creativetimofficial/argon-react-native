@@ -345,6 +345,10 @@ img.phone2{
   max-height: 440px;
   left: 0px;
 }
+
+.section-components{
+  padding-top: 150px;
+}
 }
 
 @media (max-width:991px){
@@ -415,15 +419,12 @@ img.phone2{
 
 @media (max-width: 768px){
   .section-components .components-phone {
-    left: 170px;
+    left: 170px !important;
+    margin-top: 100px;
   }
 
   .section-components .ecomm-2{
     height: 70px;
-  }
-
-  .section-components .ecomm-3{
-    height: 120px;
   }
 
   .section-examples{

@@ -111,17 +111,17 @@ footer{
 
 img.phone1{
   position: absolute;
-  right: 0%;
-  width: 120%;
-  margin-top: 20px;
+  right: -25%;
+  width: 150%;
+  margin-top: -20px;
   z-index: 3;
 }
 
 img.phone2{
   position: absolute;
-  width: 140%;
-  right: -225px;
-  margin-top: 15px;
+  width: 175%;
+  right: -345px;
+  margin-top: -50px;
   z-index: 2;
 }
 
@@ -163,6 +163,9 @@ img.phone2{
     position: absolute;
 }
 
+.section-examples .card{
+  border: none;
+}
 .section-examples img{
   border-radius: 4px;
   width: 100%;

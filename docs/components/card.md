@@ -5,18 +5,18 @@ Show off your products, articles and just about anything with this cool card com
 ### Usage
 Simple Example: 
 ```
-<Card product={products[0]} horizontal />
+<Card item={articles[0]} horizontal />
 ```
 <p align="center">
-  <img src="https://raw.githubusercontent.com/creativetimofficial/material-kit-react-native/gh-pages/assets/img/docs/product.png" width="302px" height="425px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/argon-react-native/gh-pages/docs/assets/cards.png" width="244px" height="386px">
 </p>
 
 
 ### Props
 |    Prop    |  Type  | Default | Description |
 |:----------:|:------:|:-------:|:-----------:|
-|   product  | object |   null  |      Accepts an object which has the following keys: title, image, price and/or horizontal       |
+|    item    | object |   null  |      Accepts an object which has the following keys: title, image, price and/or horizontal       |
 | horizontal |  bool  |   false  |             |
 |    full    |  bool  |   false  |             |
-| priceColor | string |   null  |             |
+|  ctaColor  | string |   null  |             |
 | imageStyle |   any  |   null  |             |

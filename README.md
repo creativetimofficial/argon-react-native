@@ -69,7 +69,7 @@ Let us know your thoughts below. And good luck with development!
 
 ## Quick start
 - Try it out on Expo (Simulator for iOS or even your physical device if you have an Android)
-- Buy from [Creative Tim](https://www.creative-tim.com/product/argon-pro-react-native)
+- Download from [Creative Tim](https://www.creative-tim.com/product/argon-react-native)
 
 
 ## Documentation
@@ -135,7 +135,6 @@ At present, we officially aim to support the last two versions of the following 
 - Support: <https://www.creative-tim.com/contact-us>
 - Issues: [Github Issues Page](https://github.com/creativetimofficial/argon-react-native/issues)
 - [Argon Design System](https://www.creative-tim.com/product/argon-design-system?ref=argonrn-readme) - For Front End Development
-- [Buy our PRO version](https://www.creative-tim.com/product/argon-pro-react-native) **coming soon**
 - **Dashboards:**
 
 | HTML | React | Angular |
@@ -165,7 +164,7 @@ If you have questions or need help integrating the product please [contact us](h
 
 - Copyright 2019 Creative Tim (https://www.creative-tim.com/)
 
-- Licensed under MIT (https://github.com/creativetimofficial/argon-react-native/blob/master/LICENSE)
+- Licensed under MIT (https://github.com/creativetimofficial/argon-react-native/blob/master/LICENSE.md)
 
 
 
@@ -181,7 +180,6 @@ If you have questions or need help integrating the product please [contact us](h
 - [VueJS Products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes) from Creative Tim
 - [More products](https://www.creative-tim.com/bootstrap-themes) from Creative Tim
 - Check our Bundles [here](https://www.creative-tim.com/bundles?ref="argon-github-readme")
-- [Buy our PRO version](https://www.creative-tim.com/product/argon-pro-react-native)
 
 
 ### Social Media

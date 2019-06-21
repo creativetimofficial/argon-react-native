@@ -33,7 +33,7 @@ class Register extends React.Component {
                     <Block row>
                       <Icon
                         name="logo-github"
-                        family="Ionicons"
+                        family="Ionicon"
                         size={14}
                         color={"black"}
                         style={{ marginTop: 2, marginRight: 5 }}
@@ -45,7 +45,7 @@ class Register extends React.Component {
                     <Block row>
                       <Icon
                         name="logo-google"
-                        family="Ionicons"
+                        family="Ionicon"
                         size={14}
                         color={"black"}
                         style={{ marginTop: 2, marginRight: 5 }}

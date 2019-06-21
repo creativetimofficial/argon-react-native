@@ -1,6 +1,6 @@
 {
   "name": "argon-react-native",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -14,13 +14,13 @@
     "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
   },
   "dependencies": {
-    "expo": "^32.0.0",
-    "galio-framework": "^0.5.1",
+    "expo": "^33.0.0",
+    "galio-framework": "^0.5.3",
     "prop-types": "^15.7.2",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-modal-dropdown": "^0.6.2",
-    "react-navigation": "^3.8.1"
+    "react-navigation": "^3.11.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

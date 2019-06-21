@@ -286,8 +286,8 @@ class Elements extends React.Component {
               <Block row middle space="between" style={{ paddingTop: 7 }}>
                 <Text size={14}>Manage Options</Text>
                 <Icon
-                  name="stre-right"
-                  family="Galio"
+                  name="chevron-right"
+                  family="entypo"
                   style={{ paddingRight: 5 }}
                 />
               </Block>
@@ -312,7 +312,7 @@ class Elements extends React.Component {
                 onlyIcon
                 shadowless
                 icon="facebook"
-                iconFamily="FontAwesome"
+                iconFamily="Font-Awesome"
                 iconColor={theme.COLORS.WHITE}
                 iconSize={theme.SIZES.BASE * 1.625}
                 color={theme.COLORS.FACEBOOK}
@@ -325,7 +325,7 @@ class Elements extends React.Component {
                 onlyIcon
                 shadowless
                 icon="twitter"
-                iconFamily="FontAwesome"
+                iconFamily="Font-Awesome"
                 iconColor={theme.COLORS.WHITE}
                 iconSize={theme.SIZES.BASE * 1.625}
                 color={theme.COLORS.TWITTER}
@@ -338,7 +338,7 @@ class Elements extends React.Component {
                 onlyIcon
                 shadowless
                 icon="dribbble"
-                iconFamily="FontAwesome"
+                iconFamily="Font-Awesome"
                 iconColor={theme.COLORS.WHITE}
                 iconSize={theme.SIZES.BASE * 1.625}
                 color={theme.COLORS.DRIBBBLE}

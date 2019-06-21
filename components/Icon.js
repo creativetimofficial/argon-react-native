@@ -1,5 +1,5 @@
 import React from 'react';
-import { Font } from 'expo';
+import * as Font from 'expo-font';
 import { createIconSetFromIcoMoon } from '@expo/vector-icons';
 import { Icon } from 'galio-framework';
 

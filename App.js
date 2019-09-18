@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { AppLoading, Asset } from 'expo';
+import { AppLoading } from 'expo';
+import { Asset } from 'expo-asset';
 import { Block, GalioProvider } from 'galio-framework';
 
 import Screens from './navigation/Screens';

@@ -16,7 +16,7 @@ class DrawerItem extends React.Component {
             name="shop"
             family="ArgonExtra"
             size={10}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
+            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
       case "Elements":
@@ -25,16 +25,7 @@ class DrawerItem extends React.Component {
             name="map-big"
             family="ArgonExtra"
             size={12}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
-          />
-        );
-      case "Components":
-        return (
-          <Icon
-            name="map-big"
-            family="ArgonExtra"
-            size={12}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
+            color={focused ? "white" : argonTheme.COLORS.ERROR}
           />
         );
       case "Articles":
@@ -43,7 +34,7 @@ class DrawerItem extends React.Component {
             name="spaceship"
             family="ArgonExtra"
             size={12}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
+            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
       case "Profile":
@@ -52,7 +43,7 @@ class DrawerItem extends React.Component {
             name="chart-pie-35"
             family="ArgonExtra"
             size={12}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
+            color={focused ? "white" : argonTheme.COLORS.WARNING}
           />
         );
       case "Account":
@@ -61,7 +52,7 @@ class DrawerItem extends React.Component {
             name="calendar-date"
             family="ArgonExtra"
             size={12}
-            color={focused ? "white" : argonTheme.COLORS.ICON}
+            color={focused ? "white" : argonTheme.COLORS.INFO}
           />
         );
       case "Getting Started":

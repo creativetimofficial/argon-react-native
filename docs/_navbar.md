@@ -1,9 +1,9 @@
 <!-- _navbar.md -->
 <nav class="navbar">
-<div class="upgrade-to-pro">
-  Upgrade to PRO
+<div>
+  <a href="https://www.creative-tim.com/product/argon-pro-react-native" class="upgrade-to-pro button">Upgrade to PRO</a>
 </div>
-<div class="try-demo">
-  Try demo
+<div>
+  <a href="https://www.creative-tim.com/product/argon-react-native" class="try-demo button">Try Demo</a>
 </div>
 </nav>

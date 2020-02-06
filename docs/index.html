@@ -28,6 +28,9 @@
       margin-right: 30px;
       background-color: #fff;
     }
+    .try-demo:hover {
+      color: #5e72e4 !important;
+    }
     .button {
       border-color: #5e72e4;
       padding: 5px 10px;
@@ -49,6 +52,12 @@
     .sidebar-nav > .upgrade-nav-wrapper > .button {
       width: 80%;
     }
+    .markdown-section a {
+      color: #5e72e4;
+    }
+    .sidebar-toggle span {
+      background-color: #5372e4;
+    }
   </style>
 </head>
 <body>
@@ -63,6 +72,7 @@
       loadSidebar: true,
       loadSidebar: 'sidebar.md',
       loadNavbar: true,
+      loadNavbar: '_navbar.md'
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>

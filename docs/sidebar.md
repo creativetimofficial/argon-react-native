@@ -1,3 +1,7 @@
+  <div>
+    <a href="https://www.creative-tim.com/product/argon-pro-react-native" class="upgrade-to-pro button">Upgrade to PRO</a>
+  </div>
+
 * [**Get Started**](/)
 
   * [Intro](/)

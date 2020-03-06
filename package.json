@@ -1,6 +1,6 @@
 {
   "name": "argon-react-native",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -14,16 +14,24 @@
     "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
   },
   "dependencies": {
-    "expo": "^35.0.0",
-    "expo-asset": "~7.0.0",
-    "expo-font": "~7.0.0",
+    "@react-native-community/masked-view": "0.1.5",
+    "@react-navigation/bottom-tabs": "^5.0.6",
+    "@react-navigation/compat": "^5.0.0",
+    "@react-navigation/drawer": "5.0.0",
+    "@react-navigation/native": "5.0.0",
+    "@react-navigation/stack": "5.0.0",
+    "expo": "^36.0.0",
+    "expo-asset": "~8.0.0",
+    "expo-font": "~8.0.0",
     "galio-framework": "^0.6.3",
     "prop-types": "^15.7.2",
-    "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-gesture-handler": "~1.3.0",
-    "react-native-modal-dropdown": "^0.6.2",
-    "react-navigation": "^3.11.0"
+    "react": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.1.tar.gz",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-modal-dropdown": "^0.7.0",
+    "react-native-reanimated": "~1.4.0",
+    "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12"
   },
   "devDependencies": {
     "babel-preset-expo": "^7.0.0"

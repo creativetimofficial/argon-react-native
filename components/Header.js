@@ -1,5 +1,5 @@
 import React from 'react';
-import { withNavigation } from 'react-navigation';
+import { withNavigation } from '@react-navigation/compat';
 import { TouchableOpacity, StyleSheet, Platform, Dimensions } from 'react-native';
 import { Button, Block, NavBar, Text, theme } from 'galio-framework';
 
@@ -52,7 +52,6 @@ class Header extends React.Component {
   }
   renderRight = () => {
     const { white, title, navigation } = this.props;
-    const { routeName } = navigation.state;
 
     if (title === 'Title') {
       return [
@@ -61,7 +60,7 @@ class Header extends React.Component {
       ]
     }
 
-    switch (routeName) {
+    switch (title) {
       case 'Home':
         return ([
           <BellButton key='chat-home' navigation={navigation} isWhite={white} />,
@@ -167,8 +166,8 @@ class Header extends React.Component {
   }
   render() {
     const { back, title, white, transparent, bgColor, iconColor, titleColor, navigation, ...props } = this.props;
-    const { routeName } = navigation.state;
-    const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(routeName);
+
+    const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
     const headerStyles = [
       !noShadow ? styles.shadow : null,
       transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null,
@@ -182,7 +181,7 @@ class Header extends React.Component {
     return (
       <Block style={headerStyles}>
         <NavBar
-          back={back}
+          back={false}
           title={title}
           style={navbarStyles}
           transparent={transparent}
@@ -190,9 +189,12 @@ class Header extends React.Component {
           rightStyle={{ alignItems: 'center' }}
           left={
             <Icon 
-              name={back ? 'nav-left' : "menu-8"} family="ArgonExtra" 
-              size={14} onPress={this.handleLeftPress} 
-              color={iconColor || argonTheme.COLORS.ICON}/>
+              name={back ? 'chevron-left' : "menu"} family="entypo" 
+              size={20} onPress={this.handleLeftPress} 
+              color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
+              style={{ marginTop: 2 }}
+            />
+              
           }
           leftStyle={{ paddingVertical: 12, flex: 0.2 }}
           titleStyle={[

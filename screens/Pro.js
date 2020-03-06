@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform } from 'react-native';
+import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform, Linking } from 'react-native';
 import { Block, Button, Text, theme } from 'galio-framework';
 
 const { height, width } = Dimensions.get('screen');
@@ -53,8 +53,8 @@ export default class Pro extends React.Component {
                 shadowless
                 style={styles.button}
                 color={argonTheme.COLORS.INFO}
-                onPress={() => navigation.navigate('Home')}>
-                <Text bold color={theme.COLORS.WHITE}>COMING SOON</Text>
+                onPress={() => Linking.openURL('https://www.creative-tim.com/product/argon-pro-react-native').catch((err) => console.error('An error occurred', err))}>
+                <Text bold color={theme.COLORS.WHITE}>BUY NOW</Text>
               </Button>
             </Block>
           </Block>

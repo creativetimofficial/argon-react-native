@@ -1,3 +1,14 @@
+## [1.3.0] 2019-11-06
+### Updated dependencies
+- `expo@34.0.3` to `expo@35.0.0`
+- `expo-font@6.0.1` to `expo-font@7.0.0`
+- `expo-asset@6.0.0` to `expo-asset@7.0.0`
+- `react-native SDK@34.0.0` to `react-native SDK@35.0.0`
+- `galio-framework@0.6.1` to `galio-framework@0.6.3`
+- `babel-preset-expo@5.0.0` to `babel-preset-expo@7.0.0`
+### Updated files
+- changed drawer items in order to have a similar look to the PRO version
+
 ## [1.2.0] 2019-09-18
 ### Updated dependencies
 - `expo@33.0.0` to `expo@34.0.3`

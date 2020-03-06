@@ -62,35 +62,35 @@ class Profile extends React.Component {
                     <Block middle>
                       <Text
                         bold
-                        size={12}
+                        size={18}
                         color="#525F7F"
                         style={{ marginBottom: 4 }}
                       >
                         2K
                       </Text>
-                      <Text size={12}>Orders</Text>
+                      <Text size={12} color={argonTheme.COLORS.TEXT}>Orders</Text>
                     </Block>
                     <Block middle>
                       <Text
                         bold
                         color="#525F7F"
-                        size={12}
+                        size={18}
                         style={{ marginBottom: 4 }}
                       >
                         10
                       </Text>
-                      <Text size={12}>Photos</Text>
+                      <Text size={12} color={argonTheme.COLORS.TEXT}>Photos</Text>
                     </Block>
                     <Block middle>
                       <Text
                         bold
                         color="#525F7F"
-                        size={12}
+                        size={18}
                         style={{ marginBottom: 4 }}
                       >
                         89
                       </Text>
-                      <Text size={12}>Comments</Text>
+                      <Text size={12} color={argonTheme.COLORS.TEXT}>Comments</Text>
                     </Block>
                   </Block>
                 </Block>

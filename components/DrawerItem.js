@@ -56,7 +56,12 @@ class DrawerItem extends React.Component {
           />
         );
       case "Getting Started":
-        return <Icon />;
+        return (<Icon
+          name="spaceship"
+          family="ArgonExtra"
+          size={14}
+          color={focused ? "white" : "rgba(0,0,0,0.5)"}
+        />);
       case "Log out":
         return <Icon />;
       default:
@@ -65,7 +70,7 @@ class DrawerItem extends React.Component {
   };
 
   render() {
-    const { focused, title } = this.props;
+    const { focused, title, navigation } = this.props;
 
     const containerStyles = [
       styles.defaultStyle,

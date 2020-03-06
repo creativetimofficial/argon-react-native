@@ -15,7 +15,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="shop"
             family="ArgonExtra"
-            size={10}
+            size={14}
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
@@ -24,7 +24,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="map-big"
             family="ArgonExtra"
-            size={12}
+            size={14}
             color={focused ? "white" : argonTheme.COLORS.ERROR}
           />
         );
@@ -33,7 +33,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="spaceship"
             family="ArgonExtra"
-            size={12}
+            size={14}
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
@@ -42,7 +42,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="chart-pie-35"
             family="ArgonExtra"
-            size={12}
+            size={14}
             color={focused ? "white" : argonTheme.COLORS.WARNING}
           />
         );
@@ -51,7 +51,7 @@ class DrawerItem extends React.Component {
           <Icon
             name="calendar-date"
             family="ArgonExtra"
-            size={12}
+            size={14}
             color={focused ? "white" : argonTheme.COLORS.INFO}
           />
         );
@@ -109,8 +109,8 @@ class DrawerItem extends React.Component {
 
 const styles = StyleSheet.create({
   defaultStyle: {
-    paddingVertical: 15,
-    paddingHorizontal: 14
+    paddingVertical: 16,
+    paddingHorizontal: 16
   },
   activeStyle: {
     backgroundColor: argonTheme.COLORS.ACTIVE,

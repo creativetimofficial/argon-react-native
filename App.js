@@ -44,7 +44,6 @@ export default props => {
   });
 
   function _loadResourcesAsync() {
-    console.log('bro');
     return Promise.all([...cacheImages(assetImages)]);
   }
 

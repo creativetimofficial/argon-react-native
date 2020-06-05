@@ -3,12 +3,12 @@
     "name": "Argon FREE React Native",
     "slug": "argon-free-react-native",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
+    "sdkVersion": "37.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.4.0",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -24,6 +24,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim"
   }
 }

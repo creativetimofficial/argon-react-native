@@ -442,9 +442,6 @@ const styles = StyleSheet.create({
   inputTheme: {
     borderBottomColor: argonTheme.COLORS.PRIMARY
   },
-  inputTheme: {
-    borderBottomColor: argonTheme.COLORS.PRIMARY
-  },
   inputInfo: {
     borderBottomColor: argonTheme.COLORS.INFO
   },

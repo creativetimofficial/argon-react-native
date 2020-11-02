@@ -3,7 +3,7 @@
     "name": "Argon FREE React Native",
     "slug": "argon-free-react-native",
     "privacy": "public",
-    "sdkVersion": "37.0.0",
+    "sdkVersion": "39.0.0",
     "platforms": [
       "ios",
       "android"

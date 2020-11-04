@@ -75,6 +75,8 @@ export default props => {
         </GalioProvider>
       </NavigationContainer>
     );
+  } else {
+    return null
   }
 }
 

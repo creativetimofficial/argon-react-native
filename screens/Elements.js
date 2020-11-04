@@ -62,7 +62,7 @@ class Elements extends React.Component {
             </Button>
           </Block>
           <Block row space="evenly">
-            <Block flex left>
+            <Block flex left style={{marginTop: 8}}>
               <Select
                 defaultIndex={1}
                 options={["01", "02", "03", "04", "05"]}
@@ -392,7 +392,7 @@ class Elements extends React.Component {
   render() {
     return (
       <Block flex center>
-        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 30 }}>
+        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 30, width }}>
           {this.renderButtons()}
           {this.renderText()}
           {this.renderInputs()}
@@ -438,9 +438,6 @@ const styles = StyleSheet.create({
   },
   inputDefault: {
     borderBottomColor: argonTheme.COLORS.PLACEHOLDER
-  },
-  inputTheme: {
-    borderBottomColor: argonTheme.COLORS.PRIMARY
   },
   inputTheme: {
     borderBottomColor: argonTheme.COLORS.PRIMARY

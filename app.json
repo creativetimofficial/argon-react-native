@@ -3,12 +3,11 @@
     "name": "Argon FREE React Native",
     "slug": "argon-free-react-native",
     "privacy": "public",
-    "sdkVersion": "39.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.6.0",
+    "version": "1.7.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

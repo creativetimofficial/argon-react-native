@@ -35,7 +35,7 @@ export default class Tabs extends React.Component {
     Animated.timing(this.animatedValue, {
       toValue: 1,
       duration: 300,
-      // useNativeDriver: true, // color not supported
+      useNativeDriver: false, // color not supported
     }).start()
   }
 

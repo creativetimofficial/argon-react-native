@@ -12,9 +12,8 @@ Simple example:
 />
 ```
 <p align="center">
-  <img src="http://oi68.tinypic.com/5kft6x.jpg" width="425px" height="83px">
+  <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-pro-react-native/tabs.png" width="394px" height="299px">
 </p>
-
 
 ### Props
 

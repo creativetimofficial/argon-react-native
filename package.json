@@ -1,6 +1,6 @@
 {
   "name": "argon-react-native",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Argon React Native, based on Argon Design System. Coded by Creative Tim",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -21,19 +21,19 @@
     "@react-navigation/native": "5.9.3",
     "@react-navigation/stack": "5.14.3",
     "@use-expo/font": "^2.0.0",
-    "expo": "^40.0.0",
+    "expo": "^42.0.0",
     "expo-app-loading": "^1.0.1",
-    "expo-asset": "~8.2.1",
-    "expo-font": "~8.4.0",
-    "galio-framework": "^0.7.1",
+    "expo-asset": "~8.3.2",
+    "expo-font": "~9.2.1",
+    "galio-framework": "^0.8.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-gesture-handler": "~1.8.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.10.2",
     "react-native-modal-dropdown": "git+https://github.com/siemiatj/react-native-modal-dropdown.git",
-    "react-native-reanimated": "~1.13.0",
-    "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "~2.15.2"
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0"
   },
   "devDependencies": {
     "babel-preset-expo": "8.3.0"

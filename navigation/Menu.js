@@ -1,5 +1,4 @@
 import React from "react";
-import { useSafeArea } from "react-native-safe-area-context";
 import {
   ScrollView,
   StyleSheet,
@@ -11,7 +10,6 @@ import Images from "../constants/Images";
 import { DrawerItem as DrawerCustomItem } from '../components';
 
 function CustomDrawerContent({ drawerPosition, navigation, profile, focused, state, ...rest }) {
-  const insets = useSafeArea();
   const screens = [
     "Home", 
     "Profile",

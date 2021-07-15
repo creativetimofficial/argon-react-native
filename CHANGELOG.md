@@ -1,3 +1,18 @@
+## [1.7.1] 2021 - 07 - 15
+### Updated dependencies
+- updated `expo@40.0.0` to `expo@42.0.0`
+- updated `expo-asset@8.2.1` to `expo-asset@8.3.2`
+- updated `expo-font@8.4.0` to `expo-font@9.2.1`
+- updated `galio-framework@0.7.1` to `galio-framework@0.8.0`
+- updated `react-native@sdk-40.0.1.tar.gz` to `react-native@sdk-42.0.0.tar.gz`
+- updated `react-native-gesture-handler@1.8.0` to `react-native-gesture-handler@1.10.2`
+- updated `react-native-reanimated@1.13.0` to `react-native-reanimated@2.2.0`
+- updated `react-native-safe-area-context@3.1.9` to `react-native-safe-area-context@3.2.0`
+- updated `react-native-screens@2.15.2` to `react-native-screens@3.4.0`
+
+### Updated files
+- removed deprecated `useSafeArea` from `navigation/Menu.js`
+
 ## [1.7.0] 2020 - 11 - 04
 ### Updated dependencies
 - updated `@react-navigation/bottom-tabs@5.06` to `@react-navigation/bottom-tabs@5.5.1`

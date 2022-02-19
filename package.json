@@ -25,6 +25,7 @@
     "expo-app-loading": "^1.0.1",
     "expo-asset": "~8.3.2",
     "expo-font": "~9.2.1",
+    "expo-modules-core": "^0.6.5",
     "galio-framework": "^0.8.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",

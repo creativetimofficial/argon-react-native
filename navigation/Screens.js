@@ -66,7 +66,12 @@ function ElementsStack(props) {
 
 function ArticlesStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="screen">
+    <Stack.Navigator
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
       <Stack.Screen
         name="Articles"
         component={Articles}
@@ -100,7 +105,13 @@ function ArticlesStack(props) {
 
 function ProfileStack(props) {
   return (
-    <Stack.Navigator initialRouteName="Profile" mode="card" headerMode="screen">
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
       <Stack.Screen
         name="Profile"
         component={Profile}
@@ -141,7 +152,12 @@ function ProfileStack(props) {
 
 function HomeStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="screen">
+    <Stack.Navigator
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={Home}
@@ -181,7 +197,12 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="none">
+    <Stack.Navigator
+      screenOptions={{
+        mode: "card",
+        headerShown: false,
+      }}
+    >
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}

@@ -14,26 +14,27 @@
     "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
   },
   "dependencies": {
-    "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/bottom-tabs": "^5.5.1",
+    "@react-native-masked-view/masked-view": "0.2.4",
+    "@react-navigation/bottom-tabs": "^6.3.1",
     "@react-navigation/compat": "^5.1.25",
     "@react-navigation/drawer": "5.12.4",
-    "@react-navigation/native": "5.9.3",
-    "@react-navigation/stack": "5.14.3",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/stack": "^6.2.1",
     "@use-expo/font": "^2.0.0",
     "expo": "^42.0.0",
-    "expo-app-loading": "^1.0.1",
+    "expo-app-loading": "1.1.2",
     "expo-asset": "~8.3.2",
     "expo-font": "~9.2.1",
+    "expo-modules-core": "^0.2.0",
     "galio-framework": "^0.8.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
-    "react-native-gesture-handler": "~1.10.2",
+    "react-native-gesture-handler": "^1.10.3",
     "react-native-modal-dropdown": "git+https://github.com/siemiatj/react-native-modal-dropdown.git",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "~3.4.0"
+    "react-native-screens": "^3.4.0"
   },
   "devDependencies": {
     "babel-preset-expo": "8.3.0"

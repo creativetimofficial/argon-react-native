@@ -1,4 +1,5 @@
 ## [1.8.0] 2022-04-12
+### Updated dependencies
 - added `expo-modules-core` dependency 
 - updated existent dependencies
 - issues poped up in `stackNagivator` after updating dependencies so fixed in `screenOption` and updated its code

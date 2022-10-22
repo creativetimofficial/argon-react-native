@@ -1,3 +1,5 @@
+// Hello this is the first commit
+
 import React, {useState} from "react";
 import { Image } from "react-native";
 import AppLoading from "expo-app-loading";

@@ -1,3 +1,9 @@
+## [1.9.0] 2022 - 08 - 01
+- dependencies updated
+- expo version updated
+- react native version updated
+- implement expo-splash-screen for splash loading
+
 ## [1.8.1] 2022-07-19
 
 ### Updated dependencies

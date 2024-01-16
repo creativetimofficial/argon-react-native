@@ -70,7 +70,7 @@ const ImagePickerComponent = () => {
         justifyContent: "center",
       }}
     >
-      <Button title="카메라 롤에서 이미지 선택" onPress={pickImageAndSend} />
+      <Button title="이미지 선택해서 분석하기" onPress={pickImageAndSend} />
       {selectedImage && (
         <Image
           source={{ uri: selectedImage.uri }}

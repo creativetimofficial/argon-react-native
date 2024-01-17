@@ -13,7 +13,7 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Home", "Profile", "Account", "Elements", "Articles"];
+  const screens = ["홈", "복용기록확인", "복용알람", "중독위험도", "프로필"];
   return (
     <Block
       style={styles.container}

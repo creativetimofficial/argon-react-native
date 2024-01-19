@@ -3,10 +3,7 @@
     "name": "Argon FREE React Native",
     "slug": "argon-free-react-native",
     "privacy": "public",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android", "web"],
     "version": "1.7.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,9 +15,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

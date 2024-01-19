@@ -1,39 +1,83 @@
-import * as AuthSession from "expo-auth-session";
-import { useState, useEffect } from "react";
-import { Button } from "galio-framework";
+import React, { useState } from "react";
+import { View, Button, Modal } from "react-native";
+import { WebView } from "react-native-webview";
 import axios from "axios";
 
-const KakaoLogin= () => {
-  const [request, response, promptAsync] = AuthSession.useAuthRequest(
-    {
-      clientId: "9e576a8bbded1fa2161d00ee304cfc6a",
-      redirectUri: "exp://172.30.1.13:19000",
-    },
-    { authorizationEndpoint: "https://kauth.kakao.com/oauth/authorize" }
-  );
+const runFirst = `window.ReactNativeWebView.postMessage("this is message from web");`;
 
-useEffect(() => {
-  if (response?.type === "success") {
-    const { code } = response.params;
+const KakaoLogin = ({ navigation }) => {
+  const [modalVisible, setModalVisible] = useState(false);
 
-    // 인가 코드를 백엔드로 전송하는 POST 요청 보내기
-    axios
-      .post("http://34.64.158.243:8080/login/kakao", {
-        code: code,
-      })
-      .then((response) => {
-        // 요청이 성공적으로 처리되었을 때의 동작
-        console.log(response.data);
-        // 토큰 발급 등의 작업 수행
-      })
-      .catch((error) => {
-        // 요청이 실패했을 때의 동작
-        console.error(error);
-      });
+  const handleLoginButton = () => {
+    setModalVisible(true);
+  };
+
+  function LogInProgress(data) {
+    const exp = "code=";
+    var condition = data.indexOf(exp);
+
+    if (condition !== -1) {
+      var request_code = data.substring(condition + exp.length);
+      console.log("Authorization Code:", request_code);
+      sendAuthCodeToBackend(request_code);
+    }
   }
-}, [response]);
 
-  return <Button title="카카오로 로그인하기" onPress={() => promptAsync()} />;
+  const sendAuthCodeToBackend = async (authorizationCode) => {
+    var backend_url = "http://34.64.158.243:8080/login/kakao";
+
+    axios({
+      method: "post",
+      url: backend_url,
+      data: {
+        authorizationCode: authorizationCode,
+      },
+    })
+      .then(function (response) {
+        console.log("Backend Response:", response);
+        navigation.navigate("Home");
+      })
+      .catch(function (error) {
+        console.log("Backend Error:", error);
+      });
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <Button title="로그인" onPress={handleLoginButton} />
+      <Modal
+        animationType="slide"
+        transparent={false}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}
+      >
+        <WebView
+          originWhitelist={["*"]}
+          scalesPageToFit={false}
+          style={{ flex: 1 }}
+          source={{
+            uri: "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e576a8bbded1fa2161d00ee304cfc6a&redirect_uri=http://34.64.158.243:8080/login/kakao",
+          }}
+          injectedJavaScript={runFirst}
+          javaScriptEnabled={true}
+          thirdPartyCookiesEnabled={true}
+          pointerEvents={modalVisible ? "auto" : "none"}
+          onMessage={(event) => {
+            if (
+              event.nativeEvent["url"].startsWith(
+                "http://34.64.158.243:8080/login/kakao"
+              )
+            ) {
+              LogInProgress(event.nativeEvent["url"]);
+              setModalVisible(false);
+            }
+          }}
+        />
+      </Modal>
+    </View>
+  );
 };
 
 export default KakaoLogin;

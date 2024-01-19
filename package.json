@@ -14,13 +14,14 @@
     "url": "git+https://github.com/creativetimofficial/argon-react-native.git"
   },
   "dependencies": {
+    "@expo/webpack-config": "^18.1.4",
     "@react-native-masked-view/masked-view": "0.2.8",
     "@react-native-seoul/kakao-login": "^5.3.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/compat": "^5.1.25",
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/native": "^6.1.9",
-    "@react-navigation/stack": "^6.2.1",
+    "@react-navigation/stack": "^6.3.20",
     "@use-expo/font": "^2.0.0",
     "axios": "^1.6.3",
     "expo": "^48.0.16",
@@ -36,6 +37,7 @@
     "galio-framework": "^0.8.0",
     "prop-types": "^15.7.2",
     "react": "18.2.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.71.8",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-image-crop-picker": "^0.40.2",
@@ -45,6 +47,7 @@
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
     "react-native-tesseract-ocr": "^2.0.3",
+    "react-native-web": "^0.18.12",
     "react-native-webview": "^11.26.1"
   },
   "devDependencies": {

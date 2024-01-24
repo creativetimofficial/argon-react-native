@@ -53,22 +53,27 @@ class Home extends React.Component {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const photo = await this.camera.takePictureAsync(options);
-      this.setState({ photo, isCameraVisible: false });
+      this.setState({ photo, isCameraVisible: true });
     }
   };
 
   savePhoto = async () => {
+    if (!this.state.photo) {
+      console.error("No photo to save.");
+      return;
+    }
+
     console.log("Saved Photo:", this.state.photo.base64);
 
     const formData = new FormData();
-    formData.append("photo", {
+    formData.append("imageFile", {
       uri: this.state.photo.uri,
       type: "image/jpeg",
       name: "photo.jpg",
     });
 
     try {
-      const response = await fetch("YOUR_BACKEND_API_URL", {
+      const response = await fetch("http://34.64.158.243:8080/medicine", {
         method: "POST",
         body: formData,
         headers: {
@@ -77,14 +82,15 @@ class Home extends React.Component {
       });
 
       if (response.ok) {
-        console.log("사진을 성공적으로 백엔드로 전송했습니다!");
+        console.log("사진을 성공적으로 백엔드로 전송했습니다!", response);
       } else {
-        console.error("사진을 백엔드로 전송하는 데 실패했습니다.");
+        console.error("사진을 백엔드로 전송하는 데 실패했습니다.", response);
       }
     } catch (error) {
       console.error("사진을 백엔드로 전송 중 오류 발생:", error);
     }
 
+    // Close the camera modal after saving
     this.setState({ photo: null, isCameraVisible: false });
   };
 
@@ -99,55 +105,64 @@ class Home extends React.Component {
         transparent={false}
         visible={this.state.isCameraVisible}
       >
-        <Camera
-          style={{ flex: 1 }}
-          type={this.state.type}
-          ref={(ref) => {
-            this.camera = ref;
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: "transparent",
-              flexDirection: "row",
+        {this.state.photo ? (
+          <View style={{ flex: 1 }}>
+            <Image source={{ uri: this.state.photo.uri }} style={{ flex: 1 }} />
+            <View style={styles.bottomButtonsContainer}>
+              <TouchableOpacity onPress={this.retakePicture}>
+                <Text style={{ fontSize: 18, color: "black" }}>다시 찍기</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={this.savePhoto}>
+                <Text style={{ fontSize: 18, color: "black" }}>저장</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <Camera
+            style={{ flex: 1 }}
+            type={this.state.type}
+            ref={(ref) => {
+              this.camera = ref;
             }}
           >
-            <TouchableOpacity
-              style={{ flex: 0.5, alignSelf: "flex-end", alignItems: "center" }}
-              onPress={this.setType}
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: "transparent",
+                flexDirection: "row",
+              }}
             >
-              <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
-                Flip
-              </Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={{
+                  flex: 0.5,
+                  alignSelf: "flex-end",
+                  alignItems: "center",
+                }}
+                onPress={this.setType}
+              >
+                <Text
+                  style={{ fontSize: 18, marginBottom: 10, color: "white" }}
+                >
+                  Flip
+                </Text>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              style={{ flex: 0.5, alignSelf: "flex-end", alignItems: "center" }}
-              onPress={this.takePicture}
-            >
-              <Text style={{ fontSize: 18, marginBottom: 10, color: "white" }}>
-                SNAP
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </Camera>
-        {this.state.photo && (
-          <View
-            style={{
-              flex: 0.2,
-              flexDirection: "row",
-              justifyContent: "space-around",
-              alignItems: "center",
-            }}
-          >
-            <TouchableOpacity onPress={this.retakePicture}>
-              <Text style={{ fontSize: 18, color: "black" }}>다시 찍기</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.savePhoto}>
-              <Text style={{ fontSize: 18, color: "black" }}>저장</Text>
-            </TouchableOpacity>
-          </View>
+              <TouchableOpacity
+                style={{
+                  flex: 0.5,
+                  alignSelf: "flex-end",
+                  alignItems: "center",
+                }}
+                onPress={this.takePicture}
+              >
+                <Text
+                  style={{ fontSize: 18, marginBottom: 10, color: "white" }}
+                >
+                  SNAP
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Camera>
         )}
       </Modal>
     );
@@ -202,57 +217,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20,
   },
+  bottomButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginVertical: 20,
+  },
 });
 
 export default Home;
-
-// import React from 'react';
-// import { StyleSheet, Dimensions, ScrollView } from 'react-native';
-// import { Block, theme } from 'galio-framework';
-// import ImagePicker from '../components/ImagePickerComponent'
-// import { Card } from '../components';
-// import articles from '../constants/articles';
-// const { width } = Dimensions.get('screen');
-
-// class Home extends React.Component {
-//   renderArticles = () => {
-//     return (
-//       <ScrollView
-//         showsVerticalScrollIndicator={false}
-//         contentContainerStyle={styles.articles}>
-//         <Block flex>
-//           <Card item={articles[0]} horizontal  />
-//           <Block flex row>
-//             <Card item={articles[1]} style={{ marginRight: theme.SIZES.BASE }} />
-//             <Card item={articles[2]} />
-//           </Block>
-//           <Block>
-//             <ImagePicker/>
-//           </Block>
-//           <Card item={articles[3]} horizontal />
-//           <Card item={articles[4]} full />
-//         </Block>
-//       </ScrollView>
-//     )
-//   }
-
-//   render() {
-//     return (
-//       <Block flex center style={styles.home}>
-//         {this.renderArticles()}
-//       </Block>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   home: {
-//     width: width,
-//   },
-//   articles: {
-//     width: width - theme.SIZES.BASE * 2,
-//     paddingVertical: theme.SIZES.BASE,
-//   },
-// });
-
-// export default Home;

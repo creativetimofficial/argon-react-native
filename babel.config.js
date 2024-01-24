@@ -9,7 +9,7 @@ module.exports = function (api) {
           extensions: [".tsx", ".ts", ".js", ".json"],
         },
       ],
-      "react-native-reanimated/plugin",
+     ["react-native-reanimated/plugin"],
     ],
   };
 };

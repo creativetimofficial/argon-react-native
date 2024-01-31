@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button, Modal } from "react-native";
+import { View, Button, Modal, TouchableOpacity, Text } from "react-native";
 import { WebView } from "react-native-webview";
 import axios from "axios";
 
@@ -35,7 +35,7 @@ const KakaoLogin = ({ navigation }) => {
     })
       .then(function (response) {
         console.log("Backend Response:", response);
-        navigation.navigate("Home");
+        navigation.navigate("App");
       })
       .catch(function (error) {
         console.log("Backend Error:", error);
@@ -44,7 +44,18 @@ const KakaoLogin = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <Button title="로그인" onPress={handleLoginButton} />
+      <TouchableOpacity
+        onPress={handleLoginButton}
+        style={{
+          backgroundColor: "yellow",
+          padding: 10,
+          borderRadius: 5,
+          marginTop: 10,
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontWeight: "bold", fontSize: 16, width: 200, textAlign:"center"}}>카카오 로그인</Text>
+      </TouchableOpacity>
       <Modal
         animationType="slide"
         transparent={false}

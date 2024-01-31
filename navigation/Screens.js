@@ -247,14 +247,14 @@ function AppStack(props) {
       initialRouteName="Home"
     >
       <Drawer.Screen
-        name="Home"
+        name="홈"
         component={HomeStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Profile"
+        name="프로필"
         component={ProfileStack}
         options={{
           headerShown: false,
@@ -268,14 +268,14 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
-        name="Elements"
+        name="복용알람"
         component={ElementsStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Articles"
+        name="중독위험도"
         component={ArticlesStack}
         options={{
           headerShown: false,

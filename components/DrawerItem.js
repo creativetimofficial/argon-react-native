@@ -10,7 +10,7 @@ class DrawerItem extends React.Component {
     const { title, focused } = this.props;
 
     switch (title) {
-      case "Home":
+      case "홈":
         return (
           <Icon
             name="shop"
@@ -19,7 +19,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
-      case "Elements":
+      case "복용기록확인":
         return (
           <Icon
             name="map-big"
@@ -28,7 +28,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.ERROR}
           />
         );
-      case "Articles":
+      case "복용알람":
         return (
           <Icon
             name="spaceship"
@@ -37,7 +37,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.PRIMARY}
           />
         );
-      case "Profile":
+      case "중독위험도":
         return (
           <Icon
             name="chart-pie-35"
@@ -46,7 +46,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.WARNING}
           />
         );
-      case "Account":
+      case "프로필":
         return (
           <Icon
             name="calendar-date"

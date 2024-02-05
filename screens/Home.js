@@ -12,6 +12,10 @@ import {
 import { Block, theme } from "galio-framework";
 import ImagePicker from "../components/ImagePickerComponent";
 import { Camera } from "expo-camera";
+import { createStackNavigator } from "@react-navigation/stack";
+import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로로 변경하세요.
+
+const Stack = createStackNavigator();
 
 const { width, height } = Dimensions.get("screen");
 
@@ -59,11 +63,11 @@ class Home extends React.Component {
 
   savePhoto = async () => {
     if (!this.state.photo) {
-      console.error("No photo to save.");
+      console.error("저장할 사진이 없습니다.");
       return;
     }
 
-    console.log("Saved Photo:", this.state.photo.base64);
+    console.log("사진 저장됨:", this.state.photo.base64);
 
     const formData = new FormData();
     formData.append("imageFile", {
@@ -86,11 +90,18 @@ class Home extends React.Component {
       } else {
         console.error("사진을 백엔드로 전송하는 데 실패했습니다.", response);
       }
+
+      const data = await response.json();
+      this.props.navigation.push("NewStackScreen", { data: data });
     } catch (error) {
       console.error("사진을 백엔드로 전송 중 오류 발생:", error);
+
+      // 백엔드 제출이 실패하더라도 에러 메시지를 포함하여 NewStackScreen으로 이동합니다.
+      this.props.navigation.push("NewStackScreen", {
+        error: "백엔드 제출 실패",
+      });
     }
 
-    // Close the camera modal after saving
     this.setState({ photo: null, isCameraVisible: false });
   };
 
@@ -196,9 +207,16 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Block flex center style={styles.home}>
-        {this.renderArticles()}
-      </Block>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home">
+          {() => (
+            <Block flex center style={styles.home}>
+              {this.renderArticles()}
+            </Block>
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="NewStackScreen" component={NewStackScreen} />
+      </Stack.Navigator>
     );
   }
 }

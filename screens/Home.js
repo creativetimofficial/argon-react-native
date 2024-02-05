@@ -15,6 +15,7 @@ import { Camera } from "expo-camera";
 import { createStackNavigator } from "@react-navigation/stack";
 import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로로 변경하세요.
 import ImagePickerComponent from "../components/ImagePickerComponent";
+import Header from "../components/Header"; // Import the Header component
 
 const Stack = createStackNavigator();
 
@@ -226,7 +227,7 @@ class Home extends React.Component {
   render() {
     return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home">
+        <Stack.Screen name="Home" >
           {() => (
             <Block flex center style={styles.home}>
               {this.renderArticles()}

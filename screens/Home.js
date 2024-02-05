@@ -14,6 +14,7 @@ import ImagePicker from "../components/ImagePickerComponent";
 import { Camera } from "expo-camera";
 import { createStackNavigator } from "@react-navigation/stack";
 import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로로 변경하세요.
+import ImagePickerComponent from "../components/ImagePickerComponent";
 
 const Stack = createStackNavigator();
 
@@ -178,7 +179,6 @@ class Home extends React.Component {
       </Modal>
     );
   };
-
   renderArticles = () => {
     return (
       <ScrollView
@@ -186,7 +186,6 @@ class Home extends React.Component {
         contentContainerStyle={styles.articles}
       >
         <Block>
-          <ImagePicker />
           {this.state.hasPermission && (
             <View>
               <TouchableOpacity
@@ -194,9 +193,28 @@ class Home extends React.Component {
                 onPress={this.openCamera}
               >
                 <Text style={{ fontSize: 18, color: "white" }}>
-                  카메라 열기
+                  Open Camera
                 </Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.cameraButton}
+                onPress={this.pickImageAndSend}
+              >
+                <ImagePickerComponent
+                  onImageSelected={(selectedImage) => {
+                    this.setState({ selectedImage });
+                    this.props.navigation.push("NewStackScreen", {
+                      selectedImage,
+                    });
+                  }}
+                />
+              </TouchableOpacity>
+              {this.state.selectedImage && (
+                <Image
+                  source={{ uri: this.state.selectedImage.uri }}
+                  style={{ width: 200, height: 200 }}
+                />
+              )}
               {this.renderCameraModal()}
             </View>
           )}

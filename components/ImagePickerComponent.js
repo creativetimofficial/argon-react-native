@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Image, View, Text } from "react-native";
+import { Button, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import axios from "axios";
+import { withNavigation } from "@react-navigation/compat";
 
-const ImagePickerComponent = () => {
+const ImagePickerComponent = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
@@ -55,29 +56,23 @@ const ImagePickerComponent = () => {
       );
       // 백엔드로부터의 응답을 처리하세요.
       console.log(response.data);
+
+      // 이미지 선택 후에 새로운 스택창을 띄웁니다.
+      navigation.push("NewStackScreen", { selectedImage });
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <View
-      style={{
-        backgroundColor: "white",
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Button title="이미지 선택해서 보내기" onPress={pickImageAndSend} />
-      {selectedImage && (
-        <Image
-          source={{ uri: selectedImage.uri }}
-          style={{ width: 200, height: 200 }}
-        />
-      )}
+    <View>
+      <Button
+        title="이미지 선택"
+        style={{ fontSize: 18, color: "white" }}
+        onPress={pickImageAndSend}
+      />
     </View>
   );
 };
 
-export default ImagePickerComponent;
+export default withNavigation(ImagePickerComponent);

@@ -8,6 +8,7 @@ import {
   Text,
   Modal,
   Image,
+ 
 } from "react-native";
 import { Block, theme } from "galio-framework";
 import ImagePicker from "../components/ImagePickerComponent";
@@ -16,6 +17,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로로 변경하세요.
 import ImagePickerComponent from "../components/ImagePickerComponent";
 import Header from "../components/Header"; // Import the Header component
+
+
+
+import { Card } from "../components";
+import articles from "../constants/articles";
+
 
 const Stack = createStackNavigator();
 
@@ -186,30 +193,33 @@ class Home extends React.Component {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}
       >
-        <Block>
+        <Block flex row>
           {this.state.hasPermission && (
-            <View>
-              <TouchableOpacity
-                style={styles.cameraButton}
-                onPress={this.openCamera}
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>
-                  Open Camera
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.cameraButton}
-                onPress={this.pickImageAndSend}
-              >
-                <ImagePickerComponent
-                  onImageSelected={(selectedImage) => {
-                    this.setState({ selectedImage });
-                    this.props.navigation.push("NewStackScreen", {
-                      selectedImage,
-                    });
-                  }}
-                />
-              </TouchableOpacity>
+            <View style={{ flexDirection: "row", flex: 1 }}>
+              <Block style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={[styles.cameraButton, styles.greenButton]}
+                  onPress={this.openCamera}
+                >
+                  <Text style={styles.buttonText}>Open Camera</Text>
+                </TouchableOpacity>
+              </Block>
+              <Block style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={[styles.cameraButton, styles.greenButton]}
+                  onPress={this.pickImageAndSend}
+                >
+                  <ImagePickerComponent
+                    onImageSelected={(selectedImage) => {
+                      this.setState({ selectedImage });
+                      this.props.navigation.push("NewStackScreen", {
+                        selectedImage,
+                      });
+                    }}
+                  />
+    
+                </TouchableOpacity>
+              </Block>
               {this.state.selectedImage && (
                 <Image
                   source={{ uri: this.state.selectedImage.uri }}
@@ -220,6 +230,9 @@ class Home extends React.Component {
             </View>
           )}
         </Block>
+        <Block flex>
+          <Card item={articles[0]} horizontal />
+        </Block>
       </ScrollView>
     );
   };
@@ -227,14 +240,21 @@ class Home extends React.Component {
   render() {
     return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" >
+        <Stack.Screen name="Home">
           {() => (
             <Block flex center style={styles.home}>
               {this.renderArticles()}
             </Block>
+  
           )}
         </Stack.Screen>
-        <Stack.Screen name="NewStackScreen" component={NewStackScreen} />
+        <Stack.Screen
+          name="NewStackScreen"
+          component={NewStackScreen}
+          options={{
+            title: "약물분석결과",
+          }}
+        />
       </Stack.Navigator>
     );
   }
@@ -259,6 +279,26 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     marginVertical: 20,
+  },
+  buttonContainer: {
+    flex: 1,
+    marginHorizontal: 5, // Adjust margin as needed
+  },
+  cameraButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 15, // Adjust this value as needed to control the button height
+    borderRadius: 10, // Make it round
+    backgroundColor: "purple",
+    marginVertical: 20,
+    height: 50, // Fixed height for the button
+  },
+  greenButton: {
+    backgroundColor: "green", // Change color to green
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "white",
   },
 });
 

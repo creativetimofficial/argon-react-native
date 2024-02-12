@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, View } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import Constants from "expo-constants";
 import axios from "axios";
@@ -54,10 +54,10 @@ const ImagePickerComponent = ({ navigation }) => {
           },
         }
       );
-      // 백엔드로부터의 응답을 처리하세요.
+      // Handle response from backend
       console.log(response.data);
 
-      // 이미지 선택 후에 새로운 스택창을 띄웁니다.
+      // Open a new stack screen after image selection
       navigation.push("NewStackScreen", { selectedImage });
     } catch (error) {
       console.error(error);
@@ -65,14 +65,32 @@ const ImagePickerComponent = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Button
-        title="이미지 선택"
-        style={{ fontSize: 18, color: "white" }}
-        onPress={pickImageAndSend}
-      />
-    </View>
+    <TouchableOpacity
+      style={[styles.cameraButton, styles.greenButton]}
+      onPress={pickImageAndSend}
+    >
+      <Text style={styles.buttonText}>Select Image</Text>
+    </TouchableOpacity>
   );
+};
+
+const styles = {
+  cameraButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 15, // Adjust this value as needed to control the button height
+    borderRadius: 10, // Make it round
+    backgroundColor: "purple",
+    marginVertical: 20,
+    height: 50, // Fixed height for the button
+  },
+  greenButton: {
+    backgroundColor: "green", // Change color to green
+  },
+  buttonText: {
+    fontSize: 18,
+    color: "white",
+  },
 };
 
 export default withNavigation(ImagePickerComponent);

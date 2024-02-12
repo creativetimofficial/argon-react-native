@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Button, Modal, TouchableOpacity, Text } from "react-native";
+import {
+  View,
+  Button,
+  Modal,
+  TouchableOpacity,
+  Text,
+  Image,
+} from "react-native";
 import { WebView } from "react-native-webview";
 import axios from "axios";
 
@@ -47,14 +54,16 @@ const KakaoLogin = ({ navigation }) => {
       <TouchableOpacity
         onPress={handleLoginButton}
         style={{
-          backgroundColor: "yellow",
+          backgroundColor: "transparent",
           padding: 10,
           borderRadius: 5,
           marginTop: 10,
           alignItems: "center",
         }}
       >
-        <Text style={{ fontWeight: "bold", fontSize: 16, width: 200, textAlign:"center"}}>카카오 로그인</Text>
+        <Image
+          source={require("../assets/imgs/kakao.png")}
+        />
       </TouchableOpacity>
       <Modal
         animationType="slide"

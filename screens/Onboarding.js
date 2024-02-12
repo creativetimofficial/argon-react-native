@@ -7,7 +7,8 @@ import {
   Dimensions
 } from "react-native";
 import { Block, Button, Text, theme } from "galio-framework";
-
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import KakaoLogin from "../components/KakaoLogin";
 
 const { height, width } = Dimensions.get("screen");

@@ -17,6 +17,9 @@ import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로
 import ImagePickerComponent from "../components/ImagePickerComponent";
 import Header from "../components/Header"; // Import the Header component
 
+import { Card } from "../components";
+import articles from "../constants/articles";
+
 const Stack = createStackNavigator();
 
 const { width, height } = Dimensions.get("screen");
@@ -186,30 +189,33 @@ class Home extends React.Component {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}
       >
-        <Block>
+        <Block flex row style={{ marginVertical: 50 }}>
           {this.state.hasPermission && (
-            <View>
-              <TouchableOpacity
-                style={styles.cameraButton}
-                onPress={this.openCamera}
-              >
-                <Text style={{ fontSize: 18, color: "white" }}>
-                  Open Camera
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.cameraButton}
-                onPress={this.pickImageAndSend}
-              >
-                <ImagePickerComponent
-                  onImageSelected={(selectedImage) => {
-                    this.setState({ selectedImage });
-                    this.props.navigation.push("NewStackScreen", {
-                      selectedImage,
-                    });
-                  }}
-                />
-              </TouchableOpacity>
+            <View style={{ flexDirection: "row", flex: 1 }}>
+              <Block style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={[styles.cameraButton, styles.greenButton]}
+                  onPress={this.openCamera}
+                >
+                  <Text style={styles.buttonText}>카메라로</Text>
+                  <Text style={styles.buttonText}>분석하기</Text>
+                </TouchableOpacity>
+              </Block>
+              <Block style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={[styles.cameraButton, styles.greenButton]}
+                  onPress={this.pickImageAndSend}
+                >
+                  <ImagePickerComponent
+                    onImageSelected={(selectedImage) => {
+                      this.setState({ selectedImage });
+                      this.props.navigation.push("NewStackScreen", {
+                        selectedImage,
+                      });
+                    }}
+                  />
+                </TouchableOpacity>
+              </Block>
               {this.state.selectedImage && (
                 <Image
                   source={{ uri: this.state.selectedImage.uri }}
@@ -220,6 +226,19 @@ class Home extends React.Component {
             </View>
           )}
         </Block>
+        <Block flex>
+          <TouchableOpacity
+            style={[
+              styles.cameraButton,
+              styles.greenButton,
+              styles.buttonContainer,
+              { marginVertical: -56, marginHorizontal: 5 },
+            ]}
+            onPress={this.openCamera}
+          >
+            <Text style={[styles.buttonText]}>이약먹어도될까?</Text>
+          </TouchableOpacity>
+        </Block>
       </ScrollView>
     );
   };
@@ -227,14 +246,20 @@ class Home extends React.Component {
   render() {
     return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" >
+        <Stack.Screen name="Home">
           {() => (
             <Block flex center style={styles.home}>
               {this.renderArticles()}
             </Block>
           )}
         </Stack.Screen>
-        <Stack.Screen name="NewStackScreen" component={NewStackScreen} />
+        <Stack.Screen
+          name="NewStackScreen"
+          component={NewStackScreen}
+          options={{
+            title: "약물분석결과",
+          }}
+        />
       </Stack.Navigator>
     );
   }
@@ -259,6 +284,36 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     marginVertical: 20,
+  },
+  buttonContainer: {
+    flex: 1,
+    marginHorizontal: 5, // Adjust margin as needed
+    borderRadius: 15, // Add border radius for rounded corners
+    overflow: "hidden", // Ensure content stays within rounded borders
+    shadowColor: "#000", // Shadow color
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 3.84, // Shadow radius
+    elevation: 5, // Add shadow elevation for Android
+  },
+  cameraButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 15, // Adjust this value as needed to control the button height
+    borderRadius: 10, // Make it round
+    backgroundColor: "purple",
+    marginVertical: 20,
+    height: 150, // Fixed height for the button
+  },
+  greenButton: {
+    backgroundColor: "green", // Change color to green
+  },
+  buttonText: {
+    fontSize: 25,
+    color: "white",
   },
 });
 

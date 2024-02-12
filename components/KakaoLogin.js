@@ -35,7 +35,7 @@ const KakaoLogin = ({ navigation }) => {
     })
       .then(function (response) {
         console.log("Backend Response:", response);
-        navigation.navigate("App");
+        navigation.navigate("Home");
       })
       .catch(function (error) {
         console.log("Backend Error:", error);

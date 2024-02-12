@@ -8,7 +8,6 @@ import {
   Text,
   Modal,
   Image,
- 
 } from "react-native";
 import { Block, theme } from "galio-framework";
 import ImagePicker from "../components/ImagePickerComponent";
@@ -18,11 +17,8 @@ import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로
 import ImagePickerComponent from "../components/ImagePickerComponent";
 import Header from "../components/Header"; // Import the Header component
 
-
-
 import { Card } from "../components";
 import articles from "../constants/articles";
-
 
 const Stack = createStackNavigator();
 
@@ -193,7 +189,7 @@ class Home extends React.Component {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}
       >
-        <Block flex row>
+        <Block flex row style={{ marginVertical: 50 }}>
           {this.state.hasPermission && (
             <View style={{ flexDirection: "row", flex: 1 }}>
               <Block style={styles.buttonContainer}>
@@ -201,7 +197,8 @@ class Home extends React.Component {
                   style={[styles.cameraButton, styles.greenButton]}
                   onPress={this.openCamera}
                 >
-                  <Text style={styles.buttonText}>Open Camera</Text>
+                  <Text style={styles.buttonText}>카메라로</Text>
+                  <Text style={styles.buttonText}>분석하기</Text>
                 </TouchableOpacity>
               </Block>
               <Block style={styles.buttonContainer}>
@@ -217,7 +214,6 @@ class Home extends React.Component {
                       });
                     }}
                   />
-    
                 </TouchableOpacity>
               </Block>
               {this.state.selectedImage && (
@@ -231,7 +227,17 @@ class Home extends React.Component {
           )}
         </Block>
         <Block flex>
-          <Card item={articles[0]} horizontal />
+          <TouchableOpacity
+            style={[
+              styles.cameraButton,
+              styles.greenButton,
+              styles.buttonContainer,
+              { marginVertical: -56, marginHorizontal: 5 },
+            ]}
+            onPress={this.openCamera}
+          >
+            <Text style={[styles.buttonText]}>이약먹어도될까?</Text>
+          </TouchableOpacity>
         </Block>
       </ScrollView>
     );
@@ -245,7 +251,6 @@ class Home extends React.Component {
             <Block flex center style={styles.home}>
               {this.renderArticles()}
             </Block>
-  
           )}
         </Stack.Screen>
         <Stack.Screen
@@ -283,6 +288,16 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flex: 1,
     marginHorizontal: 5, // Adjust margin as needed
+    borderRadius: 15, // Add border radius for rounded corners
+    overflow: "hidden", // Ensure content stays within rounded borders
+    shadowColor: "#000", // Shadow color
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 3.84, // Shadow radius
+    elevation: 5, // Add shadow elevation for Android
   },
   cameraButton: {
     justifyContent: "center",
@@ -291,13 +306,13 @@ const styles = StyleSheet.create({
     borderRadius: 10, // Make it round
     backgroundColor: "purple",
     marginVertical: 20,
-    height: 50, // Fixed height for the button
+    height: 150, // Fixed height for the button
   },
   greenButton: {
     backgroundColor: "green", // Change color to green
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 25,
     color: "white",
   },
 });

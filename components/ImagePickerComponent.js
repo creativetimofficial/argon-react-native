@@ -69,26 +69,34 @@ const ImagePickerComponent = ({ navigation }) => {
       style={[styles.cameraButton, styles.greenButton]}
       onPress={pickImageAndSend}
     >
-      <Text style={styles.buttonText}>Select Image</Text>
+      <Text style={styles.buttonText}>이미지로</Text>
+      <Text style={styles.buttonText}>분석하기</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = {
+  buttonContainer: {
+    flex: 1,
+    marginHorizontal: 5, // Adjust margin as needed
+    borderRadius: 15, // Add border radius for rounded corners
+    overflow: "hidden", // Ensure content stays within rounded borders
+    elevation: 5, // Add shadow elevation
+  },
   cameraButton: {
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 15, // Adjust this value as needed to control the button height
-    borderRadius: 10, // Make it round
+    borderRadius: 15, // Make it round
     backgroundColor: "purple",
     marginVertical: 20,
-    height: 50, // Fixed height for the button
+    height: 100, // Fixed height for the button
   },
   greenButton: {
     backgroundColor: "green", // Change color to green
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 25,
     color: "white",
   },
 };

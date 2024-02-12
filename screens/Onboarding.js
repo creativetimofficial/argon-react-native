@@ -10,6 +10,7 @@ import { Block, Button, Text, theme } from "galio-framework";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import KakaoLogin from "../components/KakaoLogin";
+import * as Font from "expo-font";
 
 const { height, width } = Dimensions.get("screen");
 
@@ -39,18 +40,30 @@ class Onboarding extends React.Component {
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
               <Block>
-                <Text color="green" size={60}>
+                <Text
+                  color="green"
+                  style={{ fontFamily: "ArgonExtra" }}
+                  size={50}
+                >
                   My own
                 </Text>
               </Block>
               <Block>
-                <Text color="green" size={60}>
+                <Text
+                  style={{ fontFamily: "ArgonExtra" }}
+                  color="green"
+                  size={50}
+                >
                   Pharmasist
                 </Text>
               </Block>
               <Block style={styles.subTitle}>
-                <Text color="gray" size={16}>
-                  나만의 단골약사로 약물의 위험에서 벗어나세요
+                <Text
+                  style={{ fontFamily: "ArgonExtra", fontWeight:"bold" }}
+                  color="gray"
+                  size={16}
+                >
+                  나만의 단골약사로 약물위험에서 벗어나세요
                 </Text>
               </Block>
               <Block center>
@@ -60,7 +73,7 @@ class Onboarding extends React.Component {
                   onPress={() => navigation.navigate("App")}
                   textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
-                  이동버튼
+                  <Text style={{ fontFamily: "ArgonExtra" }}>이동버튼</Text>
                 </Button>
                 <KakaoLogin />
               </Block>
@@ -74,7 +87,8 @@ class Onboarding extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white"
+    backgroundColor: "white",
+    fontFamily: "ArgonExtra"
   },
   padded: {
     paddingHorizontal: theme.SIZES.BASE * 2,

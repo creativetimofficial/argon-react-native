@@ -10,15 +10,12 @@ import {
   Image,
 } from "react-native";
 import { Block, theme } from "galio-framework";
-import ImagePicker from "../components/ImagePickerComponent";
-import { Camera } from "expo-camera";
 import { createStackNavigator } from "@react-navigation/stack";
-import NewStackScreen from "./NewStackScreen"; // 경로를 실제 파일 경로로 변경하세요.
-import ImagePickerComponent from "../components/ImagePickerComponent";
-import Header from "../components/Header"; // Import the Header component
-
+import NewStackScreen from "./NewStackScreen";
 import { Card } from "../components";
 import articles from "../constants/articles";
+import { Camera } from "expo-camera";
+import ImagePickerComponent from "../components/ImagePickerComponent";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +27,7 @@ class Home extends React.Component {
     type: Camera.Constants.Type.back,
     photo: null,
     isCameraVisible: false,
+    selectedImage: null,
   };
 
   componentDidMount() {
@@ -68,11 +66,11 @@ class Home extends React.Component {
 
   savePhoto = async () => {
     if (!this.state.photo) {
-      console.error("저장할 사진이 없습니다.");
+      console.error("No photo to save.");
       return;
     }
 
-    console.log("사진 저장됨:", this.state.photo.base64);
+    console.log("Photo saved:", this.state.photo.base64);
 
     const formData = new FormData();
     formData.append("imageFile", {
@@ -91,19 +89,19 @@ class Home extends React.Component {
       });
 
       if (response.ok) {
-        console.log("사진을 성공적으로 백엔드로 전송했습니다!", response);
+        console.log("Photo successfully sent to backend!", response);
+        const data = await response.json();
+        this.props.navigation.push("NewStackScreen", { data });
       } else {
-        console.error("사진을 백엔드로 전송하는 데 실패했습니다.", response);
+        console.error("Failed to send photo to backend.", response);
+        throw new Error("No response received from the backend.");
       }
-
-      const data = await response.json();
-      this.props.navigation.push("NewStackScreen", { data: data });
     } catch (error) {
-      console.error("사진을 백엔드로 전송 중 오류 발생:", error);
+      console.error("Error while sending photo to backend:", error);
 
-      // 백엔드 제출이 실패하더라도 에러 메시지를 포함하여 NewStackScreen으로 이동합니다.
+      // Even if backend submission fails, move to NewStackScreen with error message.
       this.props.navigation.push("NewStackScreen", {
-        error: "백엔드 제출 실패",
+        error: "Backend submission failed",
       });
     }
 
@@ -112,6 +110,11 @@ class Home extends React.Component {
 
   retakePicture = () => {
     this.setState({ photo: null });
+  };
+
+  pickImageAndSend = async () => {
+    // Implementation of pickImageAndSend method
+    // You can implement this method as per your requirement to pick an image from gallery and send it to backend
   };
 
   renderCameraModal = () => {
@@ -126,10 +129,10 @@ class Home extends React.Component {
             <Image source={{ uri: this.state.photo.uri }} style={{ flex: 1 }} />
             <View style={styles.bottomButtonsContainer}>
               <TouchableOpacity onPress={this.retakePicture}>
-                <Text style={{ fontSize: 18, color: "black" }}>다시 찍기</Text>
+                <Text style={{ fontSize: 18, color: "black" }}>Retake</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.savePhoto}>
-                <Text style={{ fontSize: 18, color: "black" }}>저장</Text>
+                <Text style={{ fontSize: 18, color: "black" }}>Save</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -183,6 +186,7 @@ class Home extends React.Component {
       </Modal>
     );
   };
+
   renderArticles = () => {
     return (
       <ScrollView
@@ -197,8 +201,7 @@ class Home extends React.Component {
                   style={[styles.cameraButton, styles.greenButton]}
                   onPress={this.openCamera}
                 >
-                  <Text style={styles.buttonText}>카메라로</Text>
-                  <Text style={styles.buttonText}>분석하기</Text>
+                  <Text style={styles.buttonText}>Take Picture</Text>
                 </TouchableOpacity>
               </Block>
               <Block style={styles.buttonContainer}>
@@ -236,7 +239,7 @@ class Home extends React.Component {
             ]}
             onPress={this.openCamera}
           >
-            <Text style={[styles.buttonText]}>이약먹어도될까?</Text>
+            <Text style={[styles.buttonText]}>Take Picture</Text>
           </TouchableOpacity>
         </Block>
       </ScrollView>
@@ -257,7 +260,7 @@ class Home extends React.Component {
           name="NewStackScreen"
           component={NewStackScreen}
           options={{
-            title: "약물분석결과",
+            title: "약물 분석 결과",
           }}
         />
       </Stack.Navigator>
@@ -272,12 +275,6 @@ const styles = StyleSheet.create({
   articles: {
     width: width - theme.SIZES.BASE * 2,
     paddingVertical: theme.SIZES.BASE,
-  },
-  cameraButton: {
-    backgroundColor: "purple",
-    padding: 20,
-    alignItems: "center",
-    marginVertical: 20,
   },
   bottomButtonsContainer: {
     flexDirection: "row",

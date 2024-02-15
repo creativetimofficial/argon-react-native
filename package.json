@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
+    "@react-native-community/datetimepicker": "^7.6.2",
     "@react-native-masked-view/masked-view": "0.2.9",
+    "@react-native-picker/picker": "^2.6.1",
     "@react-native-seoul/kakao-login": "^5.3.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/compat": "^5.1.25",
@@ -43,6 +45,7 @@
     "react-native-image-crop-picker": "^0.40.2",
     "react-native-modal": "^13.0.1",
     "react-native-modal-dropdown": "1.0.2",
+    "react-native-radio-button": "^2.0.1",
     "react-native-reanimated": "~3.3.0",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",

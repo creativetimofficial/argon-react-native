@@ -1,46 +1,3 @@
-
-// import React from 'react';
-// import { StyleSheet, Dimensions, ScrollView } from 'react-native';
-// import { Block, theme } from 'galio-framework';
-
-// import { Card } from '../components';
-// import articles from '../constants/articles';
-// const { width } = Dimensions.get('screen');
-
-// class NewStackScreen extends React.Component {
-//   renderArticles = () => {
-//     return (
-//       <ScrollView
-//         showsVerticalScrollIndicator={false}
-//         contentContainerStyle={styles.articles}>
-//         <Block flex>
-//           <Card item={articles[0]} horizontal  />
-//         </Block>
-//       </ScrollView>
-//     )
-//   }
-
-//   render() {
-//     return (
-//       <Block flex center style={styles.home}>
-//         {this.renderArticles()}
-//       </Block>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   home: {
-//     width: width,    
-//   },
-//   articles: {
-//     width: width - theme.SIZES.BASE * 2,
-//     paddingVertical: theme.SIZES.BASE,
-//   },
-// });
-
-// export default NewStackScreen;
-
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -109,69 +66,68 @@ class NewStackScreen extends React.Component {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>복용 정보 입력</Text>
-              <Text>{this.state.drugName}</Text>
-              <Text>복용시작일</Text>
-              <DateTimePicker
-                value={this.state.startDate}
-                onChange={(event, date) => this.setState({ startDate: date })}
-              />
-              <Text>복용마감일</Text>
-              <DateTimePicker
-                value={this.state.endDate}
-                onChange={(event, date) => this.setState({ endDate: date })}
-              />
+              <Text style={styles.modalTitle}>복용 정보 입력</Text>
+              <Text style={styles.modalText}>{this.state.drugName}</Text>
 
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={styles.datePicker}>
+                <Text style={styles.modalSubtitle}>복용시작일:</Text>
+                <DateTimePicker
+                  value={this.state.startDate}
+                  onChange={(event, date) => this.setState({ startDate: date })}
+                />
+              </View>
 
-                    <Text>현재 복용중 여부   </Text>
-        
-                </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <View style={styles.datePicker}>
+                <Text style={styles.modalSubtitle}>복용마감일:</Text>
+                <DateTimePicker
+                  value={this.state.endDate}
+                  onChange={(event, date) => this.setState({ endDate: date })}
+                />
+              </View>
+
+              <View style={styles.rowContainer}>
+                <Text style={styles.modalSubtitle}>현재 복용중 여부:</Text>
+                <View style={styles.row}>
                   <RadioButton
                     animation={"bounceIn"}
                     isSelected={this.state.isTaking}
                     onPress={() => this.setState({ isTaking: true })}
                   />
-                  <Text>Yes   </Text>
-                </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Text style={styles.radioText}>Yes</Text>
                   <RadioButton
                     animation={"bounceIn"}
                     isSelected={!this.state.isTaking}
                     onPress={() => this.setState({ isTaking: false })}
                   />
-                  <Text>No</Text>
+                  <Text style={styles.radioText}>No</Text>
                 </View>
               </View>
 
-              <Picker
-                selectedValue={this.state.timesPerDay}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({ timesPerDay: itemValue })
-                }
-                style={{ height: 50, width: 100 }} // 이 부분을 추가해주세요.
-              >
-                <Picker.Item label="1회" value={1} />
-                <Picker.Item label="2회" value={2} />
-                <Picker.Item label="3회" value={3} />
-                <Picker.Item label="4회" value={4} />
-                <Picker.Item label="5회" value={5} />
-              </Picker>
-              <Button
-                title="제출"
-                onPress={() => {
-                  this.setModalVisible(false);
-                  console.log(this.state);
-                }}
-              />
+              <View style={styles.rowContainer}>
+                <Text style={styles.modalSubtitle}>하루 복용 횟수:</Text>
+                <Picker
+                  selectedValue={this.state.timesPerDay}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({ timesPerDay: itemValue })
+                  }
+                  style={styles.picker}
+                >
+                  <Picker.Item label="1회" value={1} />
+                  <Picker.Item label="2회" value={2} />
+                  <Picker.Item label="3회" value={3} />
+                  <Picker.Item label="4회" value={4} />
+                  <Picker.Item label="5회" value={5} />
+                </Picker>
+              </View>
+              <View style={{ flex: 1, justifyContent: "flex-end" }}>
+                <Button
+                  title="제출"
+                  onPress={() => {
+                    this.setModalVisible(false);
+                    console.log(this.state);
+                  }}
+                />
+              </View>
             </View>
           </View>
         </Modal>
@@ -202,10 +158,10 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    margin: 20,
+    margin: 30, // 모달 창과 화면 가장자리 사이의 여백 조절
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: 30, // 모달 창 내부의 여백 조절
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -216,9 +172,55 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
-  modalText: {
+
+  modalTitle: {
     marginBottom: 15,
     textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  modalSubtitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginRight: 10,
+  },
+  modalText: {
+    fontSize: 14,
+    marginBottom: 15,
+  },
+  datePicker: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 20, // 요소들 사이의 여백 조절
+  },
+  rowContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 20, // 요소들 사이의 여백 조절
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  radioText: {
+    fontSize: 14,
+  },
+  pickerContainer: {
+    flexDirection: "row",
+    alignItems: "center", // 이 부분이 추가되었습니다.
+    marginBottom: 10,
+  },
+  modalSubtitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginRight: 10,
+    flex: 1, // 이 부분이 추가되었습니다.
+  },
+  picker: {
+    height: 40,
+    width: 100,
+    fontSize: 16,
   },
 });
 

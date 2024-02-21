@@ -1,3 +1,4 @@
+// KakaoLogin.js
 import React, { useState } from "react";
 import {
   View,
@@ -31,7 +32,7 @@ const KakaoLogin = ({ navigation }) => {
   }
 
   const sendAuthCodeToBackend = async (authorizationCode) => {
-    var backend_url = "http://34.64.158.243:8080/login/kakao";
+    var backend_url = "http://34.64.161.34:8080/login/kakao";
 
     axios({
       method: "post",
@@ -61,9 +62,7 @@ const KakaoLogin = ({ navigation }) => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={require("../assets/imgs/kakao.png")}
-        />
+        <Image source={require("../assets/imgs/kakao.png")} />
       </TouchableOpacity>
       <Modal
         animationType="slide"
@@ -78,7 +77,7 @@ const KakaoLogin = ({ navigation }) => {
           scalesPageToFit={false}
           style={{ flex: 1 }}
           source={{
-            uri: "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e576a8bbded1fa2161d00ee304cfc6a&redirect_uri=http://34.64.158.243:8080/login/kakao",
+            uri: "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e576a8bbded1fa2161d00ee304cfc6a&redirect_uri=http://34.64.161.34:8080/login/kakao",
           }}
           injectedJavaScript={runFirst}
           javaScriptEnabled={true}
@@ -87,7 +86,7 @@ const KakaoLogin = ({ navigation }) => {
           onMessage={(event) => {
             if (
               event.nativeEvent["url"].startsWith(
-                "http://34.64.158.243:8080/login/kakao"
+                "http://34.64.161.34:8080/login/kakao"
               )
             ) {
               LogInProgress(event.nativeEvent["url"]);

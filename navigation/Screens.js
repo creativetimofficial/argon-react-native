@@ -9,6 +9,7 @@ import { Block } from "galio-framework";
 import CustomDrawerContent from "./Menu";
 import Elements from "../screens/Elements";
 // screens
+import Description from "../screens/Description";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
@@ -150,6 +151,54 @@ function ProfileStack(props) {
   );
 }
 
+function DescriptionStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Description"
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="Description"
+        component={Description}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              transparent
+              white
+              title="Description"
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          cardStyle: { backgroundColor: "#FFFFFF" },
+          headerTransparent: true,
+        }}
+      />
+      <Stack.Screen
+        name="Pro"
+        component={Pro}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title=""
+              back
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+
 function HomeStack(props) {
   return (
     <Stack.Navigator
@@ -261,8 +310,8 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
-        name="Account"
-        component={Register}
+        name="복용기록확인"
+        component={DescriptionStack}
         options={{
           headerShown: false,
         }}

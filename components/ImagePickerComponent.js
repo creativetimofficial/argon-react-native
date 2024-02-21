@@ -46,12 +46,13 @@ const ImagePickerComponent = ({ navigation }) => {
 
     try {
       const response = await axios.post(
-        "http://34.64.158.243:8080/medicine",
+        "http://34.64.161.34:8080/medicine",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          timeout: 100000000000000000000000, // 10초 시간 제한 설정
         }
       );
       // Handle response from backend

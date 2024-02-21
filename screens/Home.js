@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../components/Header";
 import {
   StyleSheet,
   Dimensions,
@@ -16,9 +17,7 @@ import { Card } from "../components";
 import articles from "../constants/articles";
 import { Camera } from "expo-camera";
 import ImagePickerComponent from "../components/ImagePickerComponent";
-
 const Stack = createStackNavigator();
-
 const { width, height } = Dimensions.get("screen");
 
 class Home extends React.Component {
@@ -248,9 +247,16 @@ class Home extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    
     return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home">
+        <Stack.Screen
+          name="Home"
+          options={{
+            title: "단골약사",
+          }}
+        >
           {() => (
             <Block flex center style={styles.home}>
               {this.renderArticles()}

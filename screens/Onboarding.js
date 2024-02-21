@@ -9,26 +9,21 @@ import {
 } from "react-native";
 import { Block, Button, Text, theme } from "galio-framework";
 import KakaoLogin from "../components/KakaoLogin";
+import * as Font from "expo-font";
 
 const { height, width } = Dimensions.get("screen");
 
-class Onboarding extends React.Component {
-  state = {
-    isLoggedIn: false, // 로그인 상태를 저장할 상태 변수
-  };
+import argonTheme from "../constants/Theme";
+import Images from "../constants/Images";
 
-  // 로그인 완료 시 호출될 콜백 함수
+class Onboarding extends React.Component {
   handleLoginSuccess = () => {
-    this.setState({ isLoggedIn: true });
+    // 다음 화면으로 이동
+    this.props.navigation.navigate("App"); // 다음 화면의 이름으로 변경하세요.
   };
 
   render() {
     const { navigation } = this.props;
-
-    // 로그인이 완료되면 홈 화면으로 이동합니다.
-    if (this.state.isLoggedIn) {
-      navigation.navigate("App");
-    }
 
     return (
       <Block flex style={styles.container}>
@@ -80,6 +75,7 @@ class Onboarding extends React.Component {
                   style={styles.button}
                   color={"yellow"}
                   onPress={() => navigation.navigate("App")}
+                  textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
                   <Text style={{ fontFamily: "ArgonExtra" }}>이동버튼</Text>
                 </Button>

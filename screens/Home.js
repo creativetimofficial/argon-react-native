@@ -80,7 +80,7 @@ class Home extends React.Component {
     });
 
     try {
-      const response = await fetch("http://34.64.158.243:8080/medicine", {
+      const response = await fetch("http://34.64.161.34:8080/medicine", {
         method: "POST",
         body: formData,
         headers: {
@@ -129,10 +129,10 @@ class Home extends React.Component {
             <Image source={{ uri: this.state.photo.uri }} style={{ flex: 1 }} />
             <View style={styles.bottomButtonsContainer}>
               <TouchableOpacity onPress={this.retakePicture}>
-                <Text style={{ fontSize: 18, color: "black" }}>Retake</Text>
+                <Text style={{ fontSize: 18, color: "black" }}>다시찍기</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={this.savePhoto}>
-                <Text style={{ fontSize: 18, color: "black" }}>Save</Text>
+                <Text style={{ fontSize: 18, color: "black" }}>저장</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -201,7 +201,8 @@ class Home extends React.Component {
                   style={[styles.cameraButton, styles.greenButton]}
                   onPress={this.openCamera}
                 >
-                  <Text style={styles.buttonText}>Take Picture</Text>
+                  <Text style={styles.buttonText}>사진으로</Text>
+                  <Text style={styles.buttonText}>분석하기</Text>
                 </TouchableOpacity>
               </Block>
               <Block style={styles.buttonContainer}>
@@ -239,7 +240,7 @@ class Home extends React.Component {
             ]}
             onPress={this.openCamera}
           >
-            <Text style={[styles.buttonText]}>Take Picture</Text>
+            <Text style={[styles.buttonText]}>이 약 먹어도 될까?</Text>
           </TouchableOpacity>
         </Block>
       </ScrollView>

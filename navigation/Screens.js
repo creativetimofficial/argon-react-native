@@ -259,6 +259,7 @@ export default function OnboardingStack(props) {
           headerTransparent: true,
         }}
       />
+      <Stack.Screen name="Home" component={HomeStack}/>
       <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>
   );

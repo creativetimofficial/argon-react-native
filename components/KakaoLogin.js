@@ -1,19 +1,12 @@
 // KakaoLogin.js
 import React, { useState } from "react";
-import {
-  View,
-  Button,
-  Modal,
-  TouchableOpacity,
-  Text,
-  Image,
-} from "react-native";
+import { View, TouchableOpacity, Image, Modal } from "react-native";
 import { WebView } from "react-native-webview";
 import axios from "axios";
 
 const runFirst = `window.ReactNativeWebView.postMessage("this is message from web");`;
 
-const KakaoLogin = ({ navigation }) => {
+const KakaoLogin = ({ onLoginSuccess }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleLoginButton = () => {
@@ -43,7 +36,8 @@ const KakaoLogin = ({ navigation }) => {
     })
       .then(function (response) {
         console.log("Backend Response:", response);
-        navigation.navigate("Home");
+        // 카카오 로그인이 성공했을 때 콜백 함수 호출
+        onLoginSuccess();
       })
       .catch(function (error) {
         console.log("Backend Error:", error);

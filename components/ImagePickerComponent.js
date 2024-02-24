@@ -5,8 +5,11 @@ import Constants from "expo-constants";
 import axios from "axios";
 import { withNavigation } from "@react-navigation/compat";
 
+
+
 const ImagePickerComponent = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageData, setSelectedImageData] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -21,6 +24,16 @@ const ImagePickerComponent = ({ navigation }) => {
       }
     })();
   }, []);
+
+  // ImagePickerComponent
+useEffect(() => {
+  if (selectedImageData) {
+    navigation.push("NewStackScreen", {
+      selectedImageData: selectedImageData,
+    });
+  }
+}, [selectedImageData]);
+
 
   const pickImageAndSend = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -52,14 +65,17 @@ const ImagePickerComponent = ({ navigation }) => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          timeout: 100000000000000000000000, // 10초 시간 제한 설정
+          timeout: 1000000000, // 10초 시간 제한 설정
         }
       );
       // Handle response from backend
       console.log(response.data);
+      setSelectedImageData(response.data);
 
       // Open a new stack screen after image selection
-      navigation.push("NewStackScreen", { selectedImage });
+      navigation.push("NewStackScreen", {
+        selectedImageData: selectedImageData,
+      });
     } catch (error) {
       console.error(error);
     }

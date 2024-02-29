@@ -1,12 +1,18 @@
-// KakaoLogin.js
 import React, { useState } from "react";
-import { View, TouchableOpacity, Image, Modal } from "react-native";
+import {
+  View,
+  Button,
+  Modal,
+  TouchableOpacity,
+  Text,
+  Image,
+} from "react-native";
 import { WebView } from "react-native-webview";
 import axios from "axios";
 
 const runFirst = `window.ReactNativeWebView.postMessage("this is message from web");`;
 
-const KakaoLogin = ({ onLoginSuccess }) => {
+const KakaoLogin = ({ navigation, onLoginSuccess }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleLoginButton = () => {

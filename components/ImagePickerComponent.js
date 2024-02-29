@@ -5,8 +5,6 @@ import Constants from "expo-constants";
 import axios from "axios";
 import { withNavigation } from "@react-navigation/compat";
 
-
-
 const ImagePickerComponent = ({ navigation }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedImageData, setSelectedImageData] = useState(null);
@@ -26,14 +24,13 @@ const ImagePickerComponent = ({ navigation }) => {
   }, []);
 
   // ImagePickerComponent
-useEffect(() => {
-  if (selectedImageData) {
-    navigation.push("NewStackScreen", {
-      selectedImageData: selectedImageData,
-    });
-  }
-}, [selectedImageData]);
-
+  useEffect(() => {
+    if (selectedImageData) {
+      navigation.push("NewStackScreen", {
+        selectedImageData: selectedImageData,
+      });
+    }
+  }, [selectedImageData]);
 
   const pickImageAndSend = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -68,13 +65,15 @@ useEffect(() => {
           timeout: 1000000000, // 10초 시간 제한 설정
         }
       );
+
+
       // Handle response from backend
       console.log(response.data);
       setSelectedImageData(response.data);
 
       // Open a new stack screen after image selection
       navigation.push("NewStackScreen", {
-        selectedImageData: selectedImageData,
+        selectedImageData: response.data,
       });
     } catch (error) {
       console.error(error);

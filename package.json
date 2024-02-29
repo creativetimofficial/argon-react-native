@@ -38,6 +38,7 @@
     "expo-permissions": "~14.2.1",
     "expo-splash-screen": "~0.20.5",
     "galio-framework": "^0.8.0",
+    "html-react-parser": "^5.1.8",
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -48,10 +49,14 @@
     "react-native-modal-dropdown": "1.0.2",
     "react-native-radio-button": "^2.0.1",
     "react-native-reanimated": "~3.3.0",
+    "react-native-render-html": "^6.3.4",
     "react-native-safe-area-context": "4.6.3",
     "react-native-screens": "~3.22.0",
     "react-native-web": "~0.19.6",
-    "react-native-webview": "13.2.2"
+    "react-native-webview": "13.2.2",
+    "react-native-xml2js": "^1.0.3",
+    "util": "^0.12.5",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "babel-preset-expo": "^9.3.0"

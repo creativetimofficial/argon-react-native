@@ -9,6 +9,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+import { FontAwesome } from '@expo/vector-icons';
+
 import React from "react";
 
 //argon
@@ -20,26 +22,31 @@ const { width } = Dimensions.get("screen");
 
 const thumbMeasure = (width - 48 - 32) / 3;
 const cardWidth = width - theme.SIZES.BASE * 2;
-const categories = [
-  {
-    title: "Music Album",
-    description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-    image:
-      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?fit=crop&w=840&q=80",
-    price: "$125",
-  },
-  {
-    title: "Events",
-    description:
-      "Rock music is a genre of popular music. It developed during and after the 1960s in the United Kingdom.",
-    image:
-      "https://images.unsplash.com/photo-1543747579-795b9c2c3ada?fit=crop&w=840&q=80",
-    price: "$35",
-  },
-];
 
-class Articles extends React.Component {
+// 복용 날짜별로 약 데이터를 그룹화하는 함수
+// const groupByIntakeDate = (articles) => {
+//   const grouped = {};
+
+//   articles.forEach((article) => {
+//     const { startDate, duration } = article;
+//     const start = new Date(startDate);
+    
+//     for (let day = 0; day < duration; day++) {
+//       const date = new Date(start);
+//       date.setDate(start.getDate() + day);
+//       const dateString = date.toLocaleDateString("ko-KR");
+
+//       if (!grouped[dateString]) {
+//         grouped[dateString] = [];
+//       }
+
+//       grouped[dateString].push(article);
+//     }
+//   });
+//   return grouped;
+// };
+
+class Description extends React.Component {
   renderProduct = (item, index) => {
     const { navigation } = this.props;
 
@@ -64,7 +71,7 @@ class Articles extends React.Component {
             >
               {item.price}
             </Text>
-            <Text center size={34}>
+            <Text center size={14}>
               {item.title}
             </Text>
             <Text
@@ -82,9 +89,11 @@ class Articles extends React.Component {
   };
 
   renderCards = () => {
+    // const groupedArticles = groupByIntakeDate(articles);
+
     return (
       <Block flex style={styles.group}>
-        <SubTitle title="주의하세요!" description="복약 용량과 기간에 관해 주의가 필요한 약품입니다." iconName="rocket" />
+        <SubTitle title="주의하세요!" description="복약 용량과 기간에 관해 주의가 필요한 약품입니다." iconName="hospital-o" />
         <Block flex style={{ marginTop: theme.SIZES.BASE / 2, marginBottom: theme.SIZES.BASE}}>
           <ScrollView
             horizontal={true}
@@ -98,14 +107,29 @@ class Articles extends React.Component {
               paddingHorizontal: theme.SIZES.BASE / 2,
             }}
           >
-            {categories &&
-              categories.map((item, index) =>
+            {/* 위험 약물로 변경 */}
+            {articles &&
+              articles.map((item, index) =>
                 this.renderProduct(item, index)
               )}
           </ScrollView>
         </Block>
-        
-        <SubTitle title="복용 기록" iconName="rocket" />
+
+      
+      {/* <SubTitle title="복용 기록" iconName="stethoscope" />
+      <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
+          <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
+            {Object.entries(groupedArticles).map(([date, articlesForDate], index) => (
+              <React.Fragment key={index}>
+                <Text style={{marginVertical: 8}}>{date}</Text>
+                {articlesForDate.map((article, articleIndex) => (
+                  <DrugRecordCard key={articleIndex} item={article} />
+                ))}
+              </React.Fragment>
+            ))}
+        </Block>
+      </Block> */}
+      <SubTitle title="복용 기록" iconName="stethoscope"/>
         <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
             <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
               {articles.map((article, index) => (
@@ -113,10 +137,9 @@ class Articles extends React.Component {
               ))}
           </Block>
         </Block>
-      </Block>
-    );
-  };
-  
+    </Block>
+  );
+};
 
   render() {
     return (
@@ -185,4 +208,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Articles;
+export default Description;

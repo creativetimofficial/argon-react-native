@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import {
+  ImageBackground,
   StyleSheet,
   Dimensions,
   ScrollView,
@@ -191,7 +192,7 @@ class Home extends React.Component {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}
       >
-        <Block flex row style={{ marginVertical: 50 }}>
+        <Block flex row style={{ marginVertical: 250 }}>
           {this.state.hasPermission && (
             <View style={{ flexDirection: "row", flex: 1 }}>
               <Block style={styles.buttonContainer}>
@@ -228,7 +229,7 @@ class Home extends React.Component {
             </View>
           )}
         </Block>
-        <Block flex>
+        <Block flex style={{ marginTop: -200 }}>
           <TouchableOpacity
             style={[
               styles.cameraButton,
@@ -254,12 +255,15 @@ class Home extends React.Component {
           name="Home"
           options={{
             title: "단골약사",
+            headerShown: false
           }}
         >
           {() => (
+          <ImageBackground source={require("../assets/imgs/backg2.png")} style={{width: '100%', height: '100%'}}>
             <Block flex center style={styles.home}>
               {this.renderArticles()}
             </Block>
+          </ImageBackground>
           )}
         </Stack.Screen>
         <Stack.Screen
@@ -281,6 +285,7 @@ const styles = StyleSheet.create({
   articles: {
     width: width - theme.SIZES.BASE * 2,
     paddingVertical: theme.SIZES.BASE,
+    justifyContent: "flex-end"
   },
   bottomButtonsContainer: {
     flexDirection: "row",
@@ -312,7 +317,7 @@ const styles = StyleSheet.create({
     height: 150, // Fixed height for the button
   },
   greenButton: {
-    backgroundColor: "green", // Change color to green
+    backgroundColor: "#67B779"
   },
   buttonText: {
     fontSize: 25,

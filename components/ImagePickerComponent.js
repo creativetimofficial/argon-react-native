@@ -109,7 +109,7 @@ const styles = {
     height: 100, // Fixed height for the button
   },
   greenButton: {
-    backgroundColor: "green", // Change color to green
+    backgroundColor: "#67B779"
   },
   buttonText: {
     fontSize: 25,

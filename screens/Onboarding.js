@@ -30,29 +30,14 @@ class Onboarding extends React.Component {
         <StatusBar hidden />
         <Block flex center>
           <ImageBackground
-            // source={Images.Onboarding}
+            source={require("../assets/imgs/backg1.png")}
             style={{ height, width, zIndex: 1 }}
-          />
-        </Block>
-        <Block center>
-          <Image
-            source={require("../assets/imgs/logo_sub.png")}
-            style={styles.logo}
           />
         </Block>
         <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
-              <Block style={styles.subTitle}>
-                <Text
-                  style={{fontFamily: "ArgonExtra", fontWeight: "bold", textAlign: "center", marginTop: 100}}
-                  color="gray"
-                  size={12}
-                >
-                  나만의 단골 약사로 약물 위험에서 벗어나세요!
-                </Text>
-              </Block>
-              <Block center style={{ marginTop: 40 }}>
+              <Block center style={{ marginTop: 200 }}>
                 <Button
                   style={styles.button}
                   onPress={() => navigation.navigate("App")}
@@ -72,7 +57,6 @@ class Onboarding extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
     fontFamily: "ArgonExtra",
   },
   padded: {

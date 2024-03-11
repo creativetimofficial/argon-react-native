@@ -165,16 +165,13 @@ function DescriptionStack(props) {
         component={Description}
         options={{
           header: ({ navigation, scene }) => (
-            <Header
-              transparent
-              white
-              title="Description"
-              navigation={navigation}
-              scene={scene}
+            <Header 
+              title="Description" 
+              navigation={navigation} 
+              scene={scene} 
             />
           ),
-          cardStyle: { backgroundColor: "#FFFFFF" },
-          headerTransparent: true,
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
       <Stack.Screen
@@ -311,21 +308,21 @@ function AppStack(props) {
         }}
       />
       <Drawer.Screen
-        name="복용기록확인"
+        name="복용 기록 확인"
         component={DescriptionStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="복용알람"
+        name="복용 알람"
         component={ElementsStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="중독위험도"
+        name="중독 위험도"
         component={ArticlesStack}
         options={{
           headerShown: false,

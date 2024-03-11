@@ -8,11 +8,13 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
-//argon
-import { Images, argonTheme, articles } from "../constants/";
 
-import { Card } from "../components/";
 import React from "react";
+
+//argon
+import { Card, Images, argonTheme, articles } from "../constants/";
+import DrugRecordCard from "../components/DrugRecordCard";
+import SubTitle from "../components/SubTitle";
 
 const { width } = Dimensions.get("screen");
 
@@ -82,111 +84,45 @@ class Articles extends React.Component {
   renderCards = () => {
     return (
       <Block flex style={styles.group}>
-        <Text bold size={16} style={styles.title}>
-          Cards
-        </Text>
-        <Block flex>
-          <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
-            <Card item={articles[0]} horizontal />
-            <Block flex row>
-              <Card
-                item={articles[1]}
-                style={{ marginRight: theme.SIZES.BASE }}
-              />
-              <Card item={articles[2]} />
-            </Block>
-            <Card item={articles[4]} full />
-            <Block flex card shadow style={styles.category}>
-              <ImageBackground
-                source={{ uri: Images.Products["View article"] }}
-                style={[
-                  styles.imageBlock,
-                  { width: width - theme.SIZES.BASE * 2, height: 252 },
-                ]}
-                imageStyle={{
-                  width: width - theme.SIZES.BASE * 2,
-                  height: 252,
-                }}
-              >
-                <Block style={styles.categoryTitle}>
-                  <Text size={18} bold color={theme.COLORS.WHITE}>
-                    View article
-                  </Text>
-                </Block>
-              </ImageBackground>
-            </Block>
-          </Block>
-          <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
-            <ScrollView
-              horizontal={true}
-              pagingEnabled={true}
-              decelerationRate={0}
-              scrollEventThrottle={16}
-              snapToAlignment="center"
-              showsHorizontalScrollIndicator={false}
-              snapToInterval={cardWidth + theme.SIZES.BASE * 0.375}
-              contentContainerStyle={{
-                paddingHorizontal: theme.SIZES.BASE / 2,
-              }}
-            >
-              {categories &&
-                categories.map((item, index) =>
-                  this.renderProduct(item, index)
-                )}
-            </ScrollView>
-          </Block>
-        </Block>
-      </Block>
-    );
-  };
-
-  renderAlbum = () => {
-    const { navigation } = this.props;
-
-    return (
-      <Block
-        flex
-        style={[styles.group, { paddingBottom: theme.SIZES.BASE * 5 }]}
-      >
-        <Text bold size={16} style={styles.title}>
-          Album
-        </Text>
-        <Block style={{ marginHorizontal: theme.SIZES.BASE * 2 }}>
-          <Block flex right>
-            <Text
-              size={12}
-              color={theme.COLORS.PRIMARY}
-              onPress={() => navigation.navigate("Home")}
-            >
-              View All
-            </Text>
-          </Block>
-          <Block
-            row
-            space="between"
-            style={{ marginTop: theme.SIZES.BASE, flexWrap: "wrap" }}
+        <SubTitle title="주의하세요!" description="복약 용량과 기간에 관해 주의가 필요한 약품입니다." iconName="rocket" />
+        <Block flex style={{ marginTop: theme.SIZES.BASE / 2, marginBottom: theme.SIZES.BASE}}>
+          <ScrollView
+            horizontal={true}
+            pagingEnabled={true}
+            decelerationRate={0}
+            scrollEventThrottle={16}
+            snapToAlignment="center"
+            showsHorizontalScrollIndicator={false}
+            snapToInterval={cardWidth + theme.SIZES.BASE * 0.375}
+            contentContainerStyle={{
+              paddingHorizontal: theme.SIZES.BASE / 2,
+            }}
           >
-            {Images.Viewed.map((img, index) => (
-              <Block key={`viewed-${img}`} style={styles.shadow}>
-                <Image
-                  resizeMode="cover"
-                  source={{ uri: img }}
-                  style={styles.albumThumb}
-                />
-              </Block>
-            ))}
+            {categories &&
+              categories.map((item, index) =>
+                this.renderProduct(item, index)
+              )}
+          </ScrollView>
+        </Block>
+        
+        <SubTitle title="복용 기록" iconName="rocket" />
+        <Block flex style={{ marginTop: theme.SIZES.BASE / 2 }}>
+            <Block style={{ paddingHorizontal: theme.SIZES.BASE }}>
+              {articles.map((article, index) => (
+                <DrugRecordCard key={index} item={article} horizontal />
+              ))}
           </Block>
         </Block>
       </Block>
     );
   };
+  
 
   render() {
     return (
       <Block flex center>
         <ScrollView showsVerticalScrollIndicator={false}>
           {this.renderCards()}
-          {this.renderAlbum()}
         </ScrollView>
       </Block>
     );

@@ -9,6 +9,7 @@ import { Block } from "galio-framework";
 import CustomDrawerContent from "./Menu";
 import Elements from "../screens/Elements";
 // screens
+import Description from "../screens/Description";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
@@ -150,6 +151,51 @@ function ProfileStack(props) {
   );
 }
 
+function DescriptionStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Description"
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="Description"
+        component={Description}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header 
+              title="Description" 
+              navigation={navigation} 
+              scene={scene} 
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" },
+        }}
+      />
+      <Stack.Screen
+        name="Pro"
+        component={Pro}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title=""
+              back
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+
 function HomeStack(props) {
   return (
     <Stack.Navigator
@@ -210,6 +256,7 @@ export default function OnboardingStack(props) {
           headerTransparent: true,
         }}
       />
+      <Stack.Screen name="Home" component={HomeStack}/>
       <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>
   );
@@ -247,35 +294,35 @@ function AppStack(props) {
       initialRouteName="Home"
     >
       <Drawer.Screen
-        name="Home"
+        name="홈"
         component={HomeStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Profile"
+        name="프로필"
         component={ProfileStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Account"
-        component={Register}
+        name="복용 기록 확인"
+        component={DescriptionStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Elements"
+        name="복용 알람"
         component={ElementsStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Articles"
+        name="중독 위험도"
         component={ArticlesStack}
         options={{
           headerShown: false,

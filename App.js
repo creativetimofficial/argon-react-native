@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 import { Asset } from "expo-asset";
@@ -46,7 +46,7 @@ export default function App() {
         await _loadResourcesAsync();
         // Pre-load fonts, make any API calls you need to do here
         await Font.loadAsync({
-          ArgonExtra: require("./assets/font/argon.ttf"),
+          ArgonExtra: require("./assets/font/Orbit-Regular.ttf"),
         });
       } catch (e) {
         console.warn(e);
@@ -73,12 +73,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer onReady={onLayoutRootView}>
-      <GalioProvider theme={argonTheme}>
-        <Block flex>
-          <Screens />
-        </Block>
-      </GalioProvider>
-    </NavigationContainer>
+      <NavigationContainer onReady={onLayoutRootView}>
+        <GalioProvider theme={argonTheme}>
+          <Block flex>
+            <Screens />
+          </Block>
+        </GalioProvider>
+      </NavigationContainer>
+  
   );
 }

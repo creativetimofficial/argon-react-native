@@ -36,48 +36,29 @@ class Onboarding extends React.Component {
         </Block>
         <Block center>
           <Image
-            source={require("../assets/imgs/argon-logo-onboarding.png")}
+            source={require("../assets/imgs/logo_sub.png")}
             style={styles.logo}
           />
         </Block>
         <Block flex space="between" style={styles.padded}>
           <Block flex space="around" style={{ zIndex: 2 }}>
             <Block style={styles.title}>
-              <Block>
-                <Text
-                  color="green"
-                  style={{ fontFamily: "ArgonExtra" }}
-                  size={50}
-                >
-                  My own
-                </Text>
-              </Block>
-              <Block>
-                <Text
-                  style={{ fontFamily: "ArgonExtra" }}
-                  color="green"
-                  size={50}
-                >
-                  Pharmasist
-                </Text>
-              </Block>
               <Block style={styles.subTitle}>
                 <Text
-                  style={{ fontFamily: "ArgonExtra", fontWeight: "bold" }}
+                  style={{fontFamily: "ArgonExtra", fontWeight: "bold", textAlign: "center", marginTop: 100}}
                   color="gray"
-                  size={16}
+                  size={12}
                 >
-                  나만의 단골약사로 약물위험에서 벗어나세요
+                  나만의 단골 약사로 약물 위험에서 벗어나세요!
                 </Text>
               </Block>
-              <Block center>
+              <Block center style={{ marginTop: 40 }}>
                 <Button
                   style={styles.button}
-                  color={"yellow"}
                   onPress={() => navigation.navigate("App")}
                   textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
-                  <Text style={{ fontFamily: "ArgonExtra" }}>이동버튼</Text>
+                  <Text style={{ fontFamily: "ArgonExtra", color: "white",  fontSize: 18 }}> 시작하기 </Text>
                 </Button>
                 <KakaoLogin onLoginSuccess={this.handleLoginSuccess} />
               </Block>
@@ -101,13 +82,16 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   button: {
-    width: 200,
+    width: 300,
     shadowRadius: 0,
     shadowOpacity: 0,
+    backgroundColor: "#67B779",
+    alignItems: "center",
+    justifyContent: "center",
   },
   logo: {
-    width: 200,
-    height: 60,
+    width: 194,
+    height: 210,
     zIndex: 2,
     position: "relative",
     marginTop: "-50%",

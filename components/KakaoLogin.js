@@ -31,7 +31,7 @@ const KakaoLogin = ({ navigation, onLoginSuccess }) => {
   }
 
   const sendAuthCodeToBackend = async (authorizationCode) => {
-    var backend_url = "http://34.64.161.34:8080/login/kakao";
+    var backend_url = "http://35.216.104.91:8080/login/kakao";
 
     axios({
       method: "post",
@@ -77,7 +77,7 @@ const KakaoLogin = ({ navigation, onLoginSuccess }) => {
           scalesPageToFit={false}
           style={{ flex: 1 }}
           source={{
-            uri: "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e576a8bbded1fa2161d00ee304cfc6a&redirect_uri=http://34.64.161.34:8080/login/kakao",
+            uri: "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9e576a8bbded1fa2161d00ee304cfc6a&redirect_uri=http://35.216.104.91:8080/login/kakao",
           }}
           injectedJavaScript={runFirst}
           javaScriptEnabled={true}
@@ -86,7 +86,7 @@ const KakaoLogin = ({ navigation, onLoginSuccess }) => {
           onMessage={(event) => {
             if (
               event.nativeEvent["url"].startsWith(
-                "http://34.64.161.34:8080/login/kakao"
+                "http://35.216.104.91:8080/login/kakao"
               )
             ) {
               LogInProgress(event.nativeEvent["url"]);

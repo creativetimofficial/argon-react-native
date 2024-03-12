@@ -10,6 +10,33 @@ import {
 import RadioButton from "react-native-radio-button";
 import { Picker } from "@react-native-picker/picker";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import axios from "axios"; // 상단에 axios import 추가
+
+// ModalComponent 내부의 onSubmit 함수 수정
+const onSubmit = () => {
+  const payload = {
+    medicineName: drugName,
+    dailyFrequency: timesPerDay,
+    duration: Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)), // 날짜 차이를 일(day) 단위로 계산
+    isActive: isTaking,
+    startDate: startDate.toISOString(), // ISO 문자열 형식으로 변환
+    endDate: endDate.toISOString(), // ISO 문자열 형식으로 변환
+  };
+
+  axios
+    .post("http://35.216.104.91:8080/medicine/save", payload)
+    .then((response) => {
+      console.log("Success:", response.data);
+      // 성공적으로 데이터를 전송한 후 필요한 작업 수행
+      // 예: 모달을 닫거나 사용자에게 성공 메시지 표시
+      setModalVisible(false);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // 오류 처리
+      // 예: 사용자에게 오류 메시지 표시
+    });
+};
 
 const ModalComponent = (props) => {
   return (

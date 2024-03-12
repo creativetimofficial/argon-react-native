@@ -80,7 +80,7 @@ class Home extends React.Component {
     });
 
     try {
-      const response = await fetch("http://34.64.161.34:8080/medicine", {
+      const response = await fetch("http://35.216.104.91:8080/medicine", {
         method: "POST",
         body: formData,
         headers: {

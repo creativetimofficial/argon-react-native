@@ -56,7 +56,7 @@ const ImagePickerComponent = ({ navigation }) => {
 
     try {
       const response = await axios.post(
-        "http://34.64.161.34:8080/medicine",
+        "http://35.216.104.91:8080/medicine",
         formData,
         {
           headers: {

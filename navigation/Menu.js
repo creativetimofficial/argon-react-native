@@ -1,5 +1,6 @@
 import { Block, Text, theme } from "galio-framework";
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { View, Image, ScrollView, StyleSheet } from "react-native";
+import { Icon } from 'react-native-vector-icons/MaterialIcons'; 
 
 import { DrawerItem as DrawerCustomItem } from "../components";
 import Images from "../constants/Images";
@@ -14,6 +15,8 @@ function CustomDrawerContent({
   ...rest
 }) {
   const screens = ["홈", "복용 기록 확인", "복용 알람", "중독 위험도", "프로필"];
+  const focusedColor = "#67B779";
+
   return (
     <Block
       style={styles.container}
@@ -30,7 +33,8 @@ function CustomDrawerContent({
                 title={item}
                 key={index}
                 navigation={navigation}
-                focused={state.index === index ? true : false}
+                focused={state.routeNames[state.index] === item}
+                focusedColor={focusedColor}
               />
             );
           })}

@@ -78,7 +78,7 @@ function ArticlesStack(props) {
         component={Articles}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="Articles" navigation={navigation} scene={scene} />
+            <Header title="중독 위험도" navigation={navigation} scene={scene} />
           ),
           cardStyle: { backgroundColor: "#F8F9FE" },
         }}
@@ -121,7 +121,7 @@ function ProfileStack(props) {
             <Header
               transparent
               white
-              title="Profile"
+              title="프로필"
               navigation={navigation}
               scene={scene}
             />
@@ -166,7 +166,7 @@ function DescriptionStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header 
-              title="Description" 
+              title="복용 기록 확인" 
               navigation={navigation} 
               scene={scene} 
             />
@@ -210,7 +210,7 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Home"
+              title="홈"
               search
               options
               navigation={navigation}

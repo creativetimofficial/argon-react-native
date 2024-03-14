@@ -1,58 +1,64 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Linking } from "react-native";
 import { Block, Text, theme } from "galio-framework";
+import { FontAwesome, MaterialIcons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Icon from "./Icon";
 import argonTheme from "../constants/Theme";
 
 class DrawerItem extends React.Component {
+
+  iconColor = "#67B779";
+
   renderIcon = () => {
     const { title, focused } = this.props;
+
+    const iconColor = focused ? "white" : this.iconColor;
 
     switch (title) {
       case "홈":
         return (
           <Icon
-            name="shop"
-            family="ArgonExtra"
+            name="home"
+            family="FontAwesome"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
+            color={iconColor}
           />
         );
-      case "복용기록확인":
+      case "복용 기록 확인":
         return (
           <Icon
-            name="map-big"
-            family="ArgonExtra"
+            name="history"
+            family="MaterialIcons"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.ERROR}
+            color={iconColor}
           />
         );
-      case "복용알람":
+      case "복용 알람":
         return (
           <Icon
-            name="spaceship"
-            family="ArgonExtra"
+            name="bell"
+            family="Feather"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.PRIMARY}
+            color={iconColor}
           />
         );
-      case "중독위험도":
+      case "중독 위험도":
         return (
           <Icon
-            name="chart-pie-35"
-            family="ArgonExtra"
+            name="warning"
+            family="MaterialIcons"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.WARNING}
+            color={iconColor}
           />
         );
       case "프로필":
         return (
           <Icon
-            name="calendar-date"
-            family="ArgonExtra"
+            name="account-circle"
+            family="MaterialIcons"
             size={14}
-            color={focused ? "white" : argonTheme.COLORS.INFO}
+            color={iconColor}
           />
         );
       case "Getting Started":
@@ -113,7 +119,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16
   },
   activeStyle: {
-    backgroundColor: argonTheme.COLORS.ACTIVE,
+    backgroundColor: "#67B779",
     borderRadius: 4
   },
   shadow: {

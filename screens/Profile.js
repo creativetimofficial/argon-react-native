@@ -15,10 +15,33 @@ import { HeaderHeight } from "../constants/utils";
 
 const { width, height } = Dimensions.get("screen");
 
-const thumbMeasure = (width - 48 - 32) / 3;
-
 class Profile extends React.Component {
+  state = {
+    profileImage: "",
+    nickname: "",
+  };
+
+  componentDidMount() {
+    this.fetchProfileData();
+  }
+
+  fetchProfileData = async () => {
+    try {
+      const response = await fetch("http://35.216.104.91:8080/member");
+      const data = await response.json();
+      this.setState({
+        profileImage: data.profileImage,
+        nickname: data.nickname,
+      });
+      console.log("프로필성공",data)
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
   render() {
+    const { profileImage, nickname } = this.state;
+
     return (
       <Block flex style={styles.profile}>
         <Block flex>
@@ -34,7 +57,7 @@ class Profile extends React.Component {
               <Block flex style={styles.profileCard}>
                 <Block middle style={styles.avatarContainer}>
                   <Image
-                    source={{ uri: Images.ProfilePicture }}
+                    source={{ uri: profileImage || Images.ProfilePicture }}
                     style={styles.avatar}
                   />
                 </Block>
@@ -58,52 +81,11 @@ class Profile extends React.Component {
                       MESSAGE
                     </Button>
                   </Block>
-                  <Block row space="between">
-                    <Block middle>
-                      <Text
-                        bold
-                        size={18}
-                        color="#525F7F"
-                        style={{ marginBottom: 4 }}
-                      >
-                        2K
-                      </Text>
-                      <Text size={12} color={argonTheme.COLORS.TEXT}>
-                        Orders
-                      </Text>
-                    </Block>
-                    <Block middle>
-                      <Text
-                        bold
-                        color="#525F7F"
-                        size={18}
-                        style={{ marginBottom: 4 }}
-                      >
-                        10
-                      </Text>
-                      <Text size={12} color={argonTheme.COLORS.TEXT}>
-                        Photos
-                      </Text>
-                    </Block>
-                    <Block middle>
-                      <Text
-                        bold
-                        color="#525F7F"
-                        size={18}
-                        style={{ marginBottom: 4 }}
-                      >
-                        89
-                      </Text>
-                      <Text size={12} color={argonTheme.COLORS.TEXT}>
-                        Comments
-                      </Text>
-                    </Block>
-                  </Block>
                 </Block>
                 <Block flex>
                   <Block middle style={styles.nameInfo}>
                     <Text bold size={28} color="#32325D">
-                      Jessica Jones, 27
+                      {nickname || "로그인이 필요합니다"}
                     </Text>
                     <Text size={16} color="#32325D" style={{ marginTop: 10 }}>
                       San Francisco, USA
@@ -122,7 +104,6 @@ class Profile extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   profile: {
     marginTop: Platform.OS === "android" ? -HeaderHeight : 0,
@@ -174,13 +155,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#E9ECEF",
   },
-  thumb: {
-    borderRadius: 4,
-    marginVertical: 4,
-    alignSelf: "center",
-    width: thumbMeasure,
-    height: thumbMeasure,
-  },
+
 });
 
 export default Profile;

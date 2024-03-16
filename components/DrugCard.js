@@ -1,5 +1,16 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  Button,
+} from "react-native";
+import ModalComponent from "./ModalComponent"; // 모달 컴포넌트 임포트
+import { useState, useLayoutEffect, useEffect } from "react";
+import axios from "axios";
+
 
 function decodeHtmlEntity(str) {
   const entities = {
@@ -29,6 +40,40 @@ function decodeHtmlEntity(str) {
 
 const DrugCard = ({ item }) => {
   const { itemName, efficiency, warn, sideEffect, image, typeName } = item;
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [isTaking, setIsTaking] = useState(true);
+  const [timesPerDay, setTimesPerDay] = useState(1);
+
+  // 모달을 열고 닫는 함수
+  const toggleModal = () => setModalVisible(!modalVisible);
+
+  // ModalComponent 내부의 onSubmit 함수 수정
+  const onSubmit = () => {
+    // 여기서 item.itemName을 직접 참조하거나, 다른 방법으로 drugName 값을 설정해야 합니다.
+    const drugName = itemName; // itemName이 이 컨텍스트에서 사용 가능한지 확인하세요.
+
+    const payload = {
+      medicineName: drugName,
+      dailyFrequency: timesPerDay,
+      duration: Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)), // 날짜 차이를 일(day) 단위로 계산
+      isActive: isTaking,
+      startDate: startDate.toISOString(), // ISO 문자열 형식으로 변환
+      endDate: endDate.toISOString(), // ISO 문자열 형식으로 변환
+    };
+
+    axios
+      .post("http://35.216.104.91:8080/medicine/save", payload)
+      .then((response) => {
+        console.log("Success:", response.data);
+        setModalVisible(false);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   // decodeHtmlEntity 함수를 적용하여 출력
   const renderTextWithNewLines = (text) => {
@@ -68,6 +113,26 @@ const DrugCard = ({ item }) => {
           {renderTextWithNewLines(typeName)}
         </>
       )}
+
+      <Button title="저장하기" onPress={toggleModal} />
+
+      <ModalComponent
+        modalVisible={modalVisible}
+        onRequestClose={toggleModal}
+        drugName={item.itemName}
+        startDate={startDate}
+        endDate={endDate}
+        isTaking={isTaking}
+        timesPerDay={timesPerDay}
+        onSubmit={onSubmit}
+        onStartDateChange={(event, date) => setStartDate(date)}
+        onEndDateChange={(event, date) => setEndDate(date)}
+        onTakingPress={() => setIsTaking(true)}
+        offTakingPress={() => setIsTaking(false)}
+        onTimesPerDayChange={(itemValue, itemIndex) =>
+          setTimesPerDay(itemValue)
+        }
+      />
     </ScrollView>
   );
 };

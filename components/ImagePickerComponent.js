@@ -114,7 +114,7 @@ const styles = {
   buttonText: {
     fontSize: 25,
     color: "white",
-    fontFamily: "ArgonExtra",
+    fontFamily: "Gugi",
   },
 };
 

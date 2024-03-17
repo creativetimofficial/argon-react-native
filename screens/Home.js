@@ -322,7 +322,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 25,
     color: "white",
-    fontFamily: "ArgonExtra",
+    fontFamily: "Gugi",
   },
 });
 

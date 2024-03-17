@@ -43,7 +43,7 @@ class Onboarding extends React.Component {
                   onPress={() => navigation.navigate("App")}
                   textStyle={{ color: argonTheme.COLORS.BLACK }}
                 >
-                  <Text style={{ fontFamily: "ArgonExtra", color: "white",  fontSize: 18 }}> 시작하기 </Text>
+                  <Text style={{ fontFamily: 'KoPubWorldDotum_Pro_Bold', color: "white",  fontSize: 16 }}> 시작하기 </Text>
                 </Button>
                 <KakaoLogin onLoginSuccess={this.handleLoginSuccess} />
               </Block>
@@ -57,7 +57,7 @@ class Onboarding extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    fontFamily: "ArgonExtra",
+    fontFamily: 'KoPubWorldDotum_Pro_Bold',
   },
   padded: {
     paddingHorizontal: theme.SIZES.BASE * 2,

@@ -64,25 +64,6 @@ class Profile extends React.Component {
                   />
                 </Block>
                 <Block style={styles.info}>
-                  <Block
-                    middle
-                    row
-                    space="evenly"
-                    style={{ marginTop: 20, paddingBottom: 24 }}
-                  >
-                    <Button
-                      small
-                      style={{ backgroundColor: '#9EB384' }}
-                    >
-                      CONNECT
-                    </Button>
-                    <Button
-                      small
-                      style={{ backgroundColor: '#CEDEBD' }}
-                    >
-                      MESSAGE
-                    </Button>
-                  </Block>
                 </Block>
                 <Block flex>
                 <Block middle style={styles.nameInfo}>

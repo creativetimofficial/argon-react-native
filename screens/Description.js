@@ -56,7 +56,7 @@ function Description() {
         )}
 
         <SubTitle title="복용 기록" iconName="stethoscope" />
-      </View>
+        </ScrollView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
           {hasNoRecords ? (

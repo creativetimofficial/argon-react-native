@@ -70,7 +70,7 @@ class Home extends React.Component {
       return;
     }
 
-    console.log("Photo saved:", this.state.photo.base64);
+    console.log("Photo saved:", this.state.photo.uri); // base64 대신 uri를 사용합니다.
 
     const formData = new FormData();
     formData.append("imageFile", {
@@ -90,21 +90,24 @@ class Home extends React.Component {
 
       if (response.ok) {
         console.log("Photo successfully sent to backend!", response);
-        const data = await response.json();
-        this.props.navigation.push("NewStackScreen", { data });
+        const data = await response.json(); // 서버로부터 분석 결과 데이터를 받아옵니다.
+        // 성공적으로 분석 결과를 받아왔다면, 해당 데이터를 NewStackScreen으로 넘겨줍니다.
+        this.props.navigation.push("NewStackScreen", {
+          selectedImageData: data,
+        }); // 수정된 부분
       } else {
         console.error("Failed to send photo to backend.", response);
         throw new Error("No response received from the backend.");
       }
     } catch (error) {
       console.error("Error while sending photo to backend:", error);
-
-      // Even if backend submission fails, move to NewStackScreen with error message.
+      // 오류 발생 시, 오류 메시지와 함께 NewStackScreen으로 이동합니다.
       this.props.navigation.push("NewStackScreen", {
         error: "Backend submission failed",
       });
     }
 
+    // 사진을 서버로 전송한 후, 상태를 초기화합니다.
     this.setState({ photo: null, isCameraVisible: false });
   };
 
@@ -113,7 +116,7 @@ class Home extends React.Component {
   };
 
   pickImageAndSend = async () => {
-    this.props.navigation.push("NewStackScreen", { data }); 
+    this.props.navigation.push("NewStackScreen", { data });
   };
 
   renderCameraModal = () => {
@@ -243,15 +246,18 @@ renderArticles = () => {
           name="Home"
           options={{
             title: "단골약사",
-            headerShown: false
+            headerShown: false,
           }}
         >
           {() => (
-          <ImageBackground source={require("../assets/imgs/backg2.png")} style={{width: '100%', height: '100%'}}>
-            <Block flex center style={styles.home}>
-              {this.renderArticles()}
-            </Block>
-          </ImageBackground>
+            <ImageBackground
+              source={require("../assets/imgs/backg2.png")}
+              style={{ width: "100%", height: "100%" }}
+            >
+              <Block flex center style={styles.home}>
+                {this.renderArticles()}
+              </Block>
+            </ImageBackground>
           )}
         </Stack.Screen>
         <Stack.Screen

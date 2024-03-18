@@ -9,10 +9,14 @@ import {
 } from "react-native";
 import { WebView } from "react-native-webview";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAccessToken } from "../store/reducers/authActions";
+
 
 const runFirst = `window.ReactNativeWebView.postMessage("this is message from web");`;
 
 const KakaoLogin = ({ navigation, onLoginSuccess }) => {
+  const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleLoginButton = () => {
@@ -30,6 +34,7 @@ const KakaoLogin = ({ navigation, onLoginSuccess }) => {
     }
   }
 
+  
   const sendAuthCodeToBackend = async (authorizationCode) => {
     var backend_url = "http://35.216.104.91:8080/login/kakao";
 
@@ -42,6 +47,8 @@ const KakaoLogin = ({ navigation, onLoginSuccess }) => {
     })
       .then(function (response) {
         console.log("Backend Response:", response);
+        // 여기서 액세스 토큰을 Redux 스토어에 저장합니다.
+        dispatch(setAccessToken(response.data.accessToken));
         // 카카오 로그인이 성공했을 때 콜백 함수 호출
         onLoginSuccess();
       })

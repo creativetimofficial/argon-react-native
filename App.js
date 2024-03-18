@@ -5,6 +5,8 @@ import * as Font from "expo-font";
 import { Asset } from "expo-asset";
 import { Block, GalioProvider } from "galio-framework";
 import { NavigationContainer } from "@react-navigation/native";
+import { Provider } from 'react-redux';
+import store from './store'; // 스토어 파일의 위치에 맞게 경로를 조정하세요.
 
 // Before rendering any navigation stack
 import { enableScreens } from "react-native-screens";
@@ -80,6 +82,7 @@ export default function App() {
   }
 
   return (
+    <Provider store={store}>
       <NavigationContainer onReady={onLayoutRootView}>
         <GalioProvider theme={argonTheme}>
           <Block flex>
@@ -87,6 +90,6 @@ export default function App() {
           </Block>
         </GalioProvider>
       </NavigationContainer>
-  
+    </Provider>
   );
 }

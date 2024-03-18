@@ -1,13 +1,20 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import {TouchableOpacity, View, Text, Image, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const DrugRecordCard = ({ item }) => {
+  const navigation = useNavigation();
   const { itemName, dailyFrequency, startDate, endDate, image, typeName } =
     item;
 
   return (
-    <View style={styles.card}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() =>
+        navigation.navigate("MedicineDetail", { itemName: item.itemName })
+      }
+    >
       <View style={styles.contentContainer}>
         {image && (
           <View style={styles.imageContainer}>
@@ -22,7 +29,7 @@ const DrugRecordCard = ({ item }) => {
           <Text style={styles.text}>분류: {typeName}</Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -156,7 +156,7 @@ class Home extends React.Component {
               <TouchableOpacity
                 style={{
                   flex: 0.5,
-                  alignSelf: "flex-end",
+                  alignSelf: "center",
                   alignItems: "center",
                 }}
                 onPress={this.setType}
@@ -189,7 +189,7 @@ class Home extends React.Component {
     );
   };
 
-  renderArticles = () => {
+renderArticles = () => {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -197,53 +197,41 @@ class Home extends React.Component {
       >
         <Block flex row style={{ marginVertical: 250 }}>
           {this.state.hasPermission && (
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <Block style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={[styles.cameraButton, styles.greenButton]}
-                  onPress={this.openCamera}
-                >
-                  <Text style={styles.buttonText}>사진으로</Text>
-                  <Text style={styles.buttonText}>분석하기</Text>
-                </TouchableOpacity>
-              </Block>
-              <Block style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={[styles.cameraButton, styles.greenButton]}
-                  onPress={this.pickImageAndSend}
-                >
-                  <ImagePickerComponent
-                    onImageSelected={(selectedImage) => {
-                      this.setState({ selectedImage });
-                      this.props.navigation.push("NewStackScreen", {
-                        selectedImage,
-                      });
-                    }}
-                  />
-                </TouchableOpacity>
-              </Block>
-              {this.state.selectedImage && (
-                <Image
-                  source={{ uri: this.state.selectedImage.uri }}
-                  style={{ width: 200, height: 200 }}
-                />
+            <View style={{ flexDirection: "column", flex: 1 }}>
+              {this.state.hasPermission && (
+                <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                  <Block style={styles.buttonContainer}>
+                    <TouchableOpacity
+                      style={[styles.cameraButton, styles.greenButton]}
+                      onPress={this.openCamera}
+                    >
+                      <Text style={styles.buttonText}>사진으로</Text>
+                      <Text style={styles.buttonText}>분석하기</Text>
+                    </TouchableOpacity>
+                  </Block>
+                </View>
               )}
-              {this.renderCameraModal()}
+              {this.state.hasPermission && (
+                <View style={{ flexDirection: "row", justifyContent: "center" }}> 
+                  <Block style={styles.buttonContainer}>
+                    <TouchableOpacity
+                      style={[styles.cameraButton, styles.greenButton]}
+                      onPress={this.pickImageAndSend}
+                    >
+                      <ImagePickerComponent
+                        onImageSelected={(selectedImage) => {
+                          this.setState({ selectedImage });
+                          this.props.navigation.push("NewStackScreen", {
+                            selectedImage,
+                          });
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </Block>
+                </View>
+              )}
             </View>
           )}
-        </Block>
-        <Block flex style={{ marginTop: -200 }}>
-          <TouchableOpacity
-            style={[
-              styles.cameraButton,
-              styles.greenButton,
-              styles.buttonContainer,
-              { marginVertical: -56, marginHorizontal: 5 },
-            ]}
-            onPress={this.openCamera}
-          >
-            <Text style={[styles.buttonText]}>이 약 먹어도 될까?</Text>
-          </TouchableOpacity>
         </Block>
       </ScrollView>
     );
@@ -328,7 +316,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 25,
     color: "white",
-    fontFamily: "ArgonExtra",
+    fontFamily: "Gugi",
   },
 });
 

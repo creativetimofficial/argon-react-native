@@ -49,6 +49,13 @@ export default function App() {
         // Pre-load fonts, make any API calls you need to do here
         await Font.loadAsync({
           ArgonExtra: require("./assets/font/Orbit-Regular.ttf"),
+          KoPubWorldBatang_Pro_Bold: require("./assets/font/KoPubWorld_Batang_Pro_Bold.otf"),
+          KoPubWorldBatang_Pro_Light: require("./assets/font/KoPubWorld_Batang_Pro_Light.otf"),
+          KoPubWorldBatang_Pro_Medium: require("./assets/font/KoPubWorld_Batang_Pro_Medium.otf"),
+          KoPubWorldDotum_Pro_Bold: require("./assets/font/KoPubWorld_Dotum_Pro_Bold.otf"),
+          KoPubWorldDotum_Pro_Light: require("./assets/font/KoPubWorld_Dotum_Pro_Light.otf"),
+          KoPubWorldDotum_Pro_Medium: require("./assets/font/KoPubWorld_Dotum_Pro_Medium.otf"),
+          Gugi: require("./assets/font/Gugi-Regular.ttf"),
         });
       } catch (e) {
         console.warn(e);

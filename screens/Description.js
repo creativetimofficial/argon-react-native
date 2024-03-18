@@ -43,6 +43,7 @@ function Description() {
   const hasNoRecords = records.medicineRecords.length === 0;
 
   return (
+
     <Block flex center>
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Render warning cards for risk records */}
@@ -55,7 +56,10 @@ function Description() {
           </>
         )}
 
+
         <SubTitle title="복용 기록" iconName="stethoscope" />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
           {hasNoRecords ? (
             <View style={styles.noRecordsContainer}>

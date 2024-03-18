@@ -35,7 +35,7 @@ class Home extends React.Component {
   }
 
   getCameraPermission = async () => {
-    const { status } = await Camera.requestPermissionsAsync();
+    const { status } = await Camera.requestCameraPermissionsAsync();
     this.setState({ hasPermission: status === "granted" });
   };
 
@@ -148,39 +148,26 @@ class Home extends React.Component {
           >
             <View
               style={{
-                flex: 1,
-                backgroundColor: "transparent",
+                position: "absolute",
+                bottom: 0,
                 flexDirection: "row",
+                justifyContent: "space-around",
+                width: "100%",
+                padding: 20,
               }}
             >
               <TouchableOpacity
-                style={{
-                  flex: 0.5,
-                  alignSelf: "center",
-                  alignItems: "center",
-                }}
                 onPress={this.setType}
+                style={{ alignSelf: "flex-end" }}
               >
-                <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: "white" }}
-                >
-                  Flip
-                </Text>
+                <Text style={{ fontSize: 18, color: "white" }}>Flip</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={{
-                  flex: 0.5,
-                  alignSelf: "flex-end",
-                  alignItems: "center",
-                }}
                 onPress={this.takePicture}
+                style={{ alignSelf: "flex-end" }}
               >
-                <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: "white" }}
-                >
-                  SNAP
-                </Text>
+                <Text style={{ fontSize: 18, color: "white" }}>SNAP</Text>
               </TouchableOpacity>
             </View>
           </Camera>
@@ -189,7 +176,7 @@ class Home extends React.Component {
     );
   };
 
-renderArticles = () => {
+  renderArticles = () => {
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -199,19 +186,25 @@ renderArticles = () => {
           {this.state.hasPermission && (
             <View style={{ flexDirection: "column", flex: 1 }}>
               {this.state.hasPermission && (
-                <View style={{ flexDirection: "row", justifyContent: "center" }}>
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                >
                   <Block style={styles.buttonContainer}>
                     <TouchableOpacity
                       style={[styles.cameraButton, styles.greenButton]}
                       onPress={this.openCamera}
                     >
-                      <Text style={styles.buttonText}>사진 촬영하여 분석하기</Text>
+                      <Text style={styles.buttonText}>
+                        사진 촬영하여 분석하기
+                      </Text>
                     </TouchableOpacity>
                   </Block>
                 </View>
               )}
               {this.state.hasPermission && (
-                <View style={{ flexDirection: "row", justifyContent: "center" }}> 
+                <View
+                  style={{ flexDirection: "row", justifyContent: "center" }}
+                >
                   <Block style={styles.buttonContainer}>
                     <TouchableOpacity
                       style={[styles.cameraButton, styles.greenButton]}
@@ -255,6 +248,7 @@ renderArticles = () => {
             >
               <Block flex center style={styles.home}>
                 {this.renderArticles()}
+                {this.renderCameraModal()}
               </Block>
             </ImageBackground>
           )}

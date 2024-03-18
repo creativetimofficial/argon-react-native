@@ -56,6 +56,9 @@
     "react-native-web": "~0.19.6",
     "react-native-webview": "13.2.2",
     "react-native-xml2js": "^1.0.3",
+    "react-redux": "^9.1.0",
+    "redux": "^5.0.1",
+    "redux-devtools-extension": "^2.13.9",
     "util": "^0.12.5",
     "xml2js": "^0.6.2"
   },

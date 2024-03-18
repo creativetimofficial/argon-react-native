@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Dimensions, View } from "react-native";
+import { ScrollView, StyleSheet, Dimensions, Text, View } from "react-native";
 import axios from "axios";
 import { Block } from "galio-framework";
 import DrugRecordCard from "../components/DrugRecordCard";
 import SubTitle from "../components/SubTitle";
+import RiskRecordCard from "../components/RiskRecordCard"; 
 import { useSelector } from "react-redux"; // Redux 스토어의 상태에 접근하기 위해 사용
 
 const { width } = Dimensions.get("screen");
@@ -14,13 +15,11 @@ function Description() {
     riskRecords: [],
   });
 
-  // Redux 스토어에서 액세스 토큰 가져오기
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        // 요청 헤더에 엑세스 토큰 추가
         const response = await axios.get("http://35.216.104.91:8080/record", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -28,7 +27,6 @@ function Description() {
         });
         setRecords(response.data);
       } catch (error) {
-        // 오류 로그를 좀 더 상세하게 출력
         console.error(
           "Error fetching records: ",
           error.response ? error.response.data : error
@@ -39,22 +37,61 @@ function Description() {
     if (accessToken) {
       fetchRecords();
     }
-  }, [accessToken]); // 의존성 배열에 accessToken 추가
+  }, [accessToken]);
+
+  // Check if there are no medicine records
+  const hasNoRecords = records.medicineRecords.length === 0;
 
   return (
-    <Block flex>
-      <View style={{ paddingTop: 20 }}>
+
+    <Block flex center>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Render warning cards for risk records */}
+        {records.riskRecords.length > 0 && (
+          <>
+            <SubTitle title="경고" iconName="warning" />
+            {records.riskRecords.map((record, index) => (
+              <RiskRecordCard key={`risk-${index}`} record={record} />
+            ))}
+          </>
+        )}
+
+
         <SubTitle title="복용 기록" iconName="stethoscope" />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
-          {records.medicineRecords.map((record, index) => (
-            <DrugRecordCard key={index} item={record} />
-          ))}
+          {hasNoRecords ? (
+            <View style={styles.noRecordsContainer}>
+              <Text style={styles.noRecordsText}>
+                저장된 약물 정보가 없습니다.
+              </Text>
+              <Text style={styles.noRecordsText}>
+                로그인 후 약물 분석을 진행해주세요.
+              </Text>
+            </View>
+          ) : (
+            records.medicineRecords.map((record, index) => (
+              <DrugRecordCard key={index} item={record} />
+            ))
+          )}
         </Block>
       </ScrollView>
     </Block>
   );
 }
+
+const styles = StyleSheet.create({
+  noRecordsContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  noRecordsText: {
+    fontSize: 16,
+    textAlign: "center",
+  },
+});
 
 export default Description;

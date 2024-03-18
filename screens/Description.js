@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Dimensions } from "react-native";
+import { ScrollView, StyleSheet, Dimensions, View } from "react-native";
 import axios from "axios";
 import { Block } from "galio-framework";
 import DrugRecordCard from "../components/DrugRecordCard";
@@ -42,9 +42,11 @@ function Description() {
   }, [accessToken]); // 의존성 배열에 accessToken 추가
 
   return (
-    <Block flex center>
-      <ScrollView showsVerticalScrollIndicator={false}>
+    <Block flex>
+      <View style={{ paddingTop: 20 }}>
         <SubTitle title="복용 기록" iconName="stethoscope" />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
           {records.medicineRecords.map((record, index) => (
             <DrugRecordCard key={index} item={record} />

@@ -205,8 +205,7 @@ renderArticles = () => {
                       style={[styles.cameraButton, styles.greenButton]}
                       onPress={this.openCamera}
                     >
-                      <Text style={styles.buttonText}>사진으로</Text>
-                      <Text style={styles.buttonText}>분석하기</Text>
+                      <Text style={styles.buttonText}>사진 촬영하여 분석하기</Text>
                     </TouchableOpacity>
                   </Block>
                 </View>
@@ -289,7 +288,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
-    marginHorizontal: 5, // Adjust margin as needed
+    marginHorizontal: 20, // Adjust margin as needed
+    marginTop: 60,
+    marginBottom: -70,
+    paddingVertical: 15,
     borderRadius: 15, // Add border radius for rounded corners
     overflow: "hidden", // Ensure content stays within rounded borders
     shadowColor: "#000", // Shadow color
@@ -304,11 +306,11 @@ const styles = StyleSheet.create({
   cameraButton: {
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 15, // Adjust this value as needed to control the button height
+    paddingVertical: 15,
     borderRadius: 10, // Make it round
     backgroundColor: "purple",
-    marginVertical: 20,
-    height: 150, // Fixed height for the button
+    marginVertical: -5,
+    height: 100, // Fixed height for the button
   },
   greenButton: {
     backgroundColor: "#67B779"

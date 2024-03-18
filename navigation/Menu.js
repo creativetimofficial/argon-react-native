@@ -14,7 +14,7 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["홈", "복용 기록 확인", "복용 알람", "중독 위험도", "프로필"];
+  const screens = ["홈", "프로필", "복용 기록 확인", "복용 알람", "중독 위험도"];
   const focusedColor = "#67B779";
 
   return (

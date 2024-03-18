@@ -4,6 +4,7 @@ import axios from "axios";
 import { Block } from "galio-framework";
 import DrugRecordCard from "../components/DrugRecordCard";
 import SubTitle from "../components/SubTitle";
+import RiskRecordCard from "../components/RiskRecordCard"; 
 import { useSelector } from "react-redux"; // Redux 스토어의 상태에 접근하기 위해 사용
 
 const { width } = Dimensions.get("screen");
@@ -44,10 +45,19 @@ function Description() {
   return (
     <Block flex center>
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Render warning cards for risk records */}
+        {records.riskRecords.length > 0 && (
+          <>
+            <SubTitle title="경고" iconName="warning" />
+            {records.riskRecords.map((record, index) => (
+              <RiskRecordCard key={`risk-${index}`} record={record} />
+            ))}
+          </>
+        )}
+
         <SubTitle title="복용 기록" iconName="stethoscope" />
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
           {hasNoRecords ? (
-            // Display a message when there are no records
             <View style={styles.noRecordsContainer}>
               <Text style={styles.noRecordsText}>
                 저장된 약물 정보가 없습니다.

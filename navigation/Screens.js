@@ -27,84 +27,6 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-function ElementsStack(props) {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen
-        name="Elements"
-        component={Elements}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Elements" navigation={navigation} scene={scene} />
-          ),
-          cardStyle: { backgroundColor: "#F8F9FE" },
-        }}
-      />
-      <Stack.Screen
-        name="Pro"
-        component={Pro}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title=""
-              back
-              white
-              transparent
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          headerTransparent: true,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function ArticlesStack(props) {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: "screen",
-      }}
-    >
-      <Stack.Screen
-        name="Articles"
-        component={Articles}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="중독 위험도" navigation={navigation} scene={scene} />
-          ),
-          cardStyle: { backgroundColor: "#F8F9FE" },
-        }}
-      />
-      <Stack.Screen
-        name="Pro"
-        component={Pro}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title=""
-              back
-              white
-              transparent
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          headerTransparent: true,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
 function ProfileStack(props) {
   return (
     <Stack.Navigator
@@ -309,20 +231,6 @@ function AppStack(props) {
       <Drawer.Screen
         name="복용 기록 확인"
         component={DescriptionStack}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="복용 알람"
-        component={ElementsStack}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="중독 위험도"
-        component={ArticlesStack}
         options={{
           headerShown: false,
         }}

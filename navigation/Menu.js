@@ -14,7 +14,7 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["홈", "프로필", "복용 기록 확인", "복용 알람", "중독 위험도"];
+  const screens = ["홈", "복용 기록 확인", "프로필"];
   const focusedColor = "#67B779";
 
   return (
@@ -38,22 +38,7 @@ function CustomDrawerContent({
               />
             );
           })}
-          <Block
-            flex
-            style={{ marginTop: 24, marginVertical: 8, paddingHorizontal: 8 }}
-          >
-            <Block
-              style={{
-                borderColor: "rgba(0,0,0,0.2)",
-                width: "100%",
-                borderWidth: StyleSheet.hairlineWidth,
-              }}
-            />
-            <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>
-              DOCUMENTATION
-            </Text>
-          </Block>
-          <DrawerCustomItem title="Getting Started" navigation={navigation} />
+          <DrawerCustomItem/>
         </ScrollView>
       </Block>
     </Block>

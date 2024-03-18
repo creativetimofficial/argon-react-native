@@ -10,6 +10,7 @@ import CustomDrawerContent from "./Menu";
 import Elements from "../screens/Elements";
 // screens
 import Description from "../screens/Description";
+import MedicineDetailScreen from "../screens/MedicineDetailScreen";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
@@ -151,50 +152,6 @@ function ProfileStack(props) {
   );
 }
 
-function DescriptionStack(props) {
-  return (
-    <Stack.Navigator
-      initialRouteName="Description"
-      screenOptions={{
-        mode: "card",
-        headerShown: "screen",
-      }}
-    >
-      <Stack.Screen
-        name="Description"
-        component={Description}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header 
-              title="복용 기록 확인" 
-              navigation={navigation} 
-              scene={scene} 
-            />
-          ),
-          cardStyle: { backgroundColor: "#F8F9FE" },
-        }}
-      />
-      <Stack.Screen
-        name="Pro"
-        component={Pro}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title=""
-              back
-              white
-              transparent
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          headerTransparent: true,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
 
 function HomeStack(props) {
   return (
@@ -258,6 +215,48 @@ export default function OnboardingStack(props) {
       />
       <Stack.Screen name="Home" component={HomeStack}/>
       <Stack.Screen name="App" component={AppStack} />
+    </Stack.Navigator>
+  );
+}
+// Updated DescriptionStack to include MedicineDetailScreen
+function DescriptionStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Description"
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="Description"
+        component={Description}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header 
+              title="복용 기록 확인" 
+              navigation={navigation} 
+              scene={scene} 
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" },
+        }}
+      />
+      {/* Add MedicineDetailScreen to the stack */}
+      <Stack.Screen
+        name="MedicineDetail"
+        component={MedicineDetailScreen}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="약물 상세 정보"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 }

@@ -1,104 +1,62 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome } from "@expo/vector-icons";
 
 const DrugRecordCard = ({ item }) => {
-  const { medicineName, dailyFrequency, duration, startDate, endDate, isActive, image, typeName } = item;
-
-  const calculateDrugIntakeDates = (startDate, duration) => {
-    const intakeDates = [];
-    const start = new Date(startDate);
-    
-    for (let day = 0; day < duration; day++) {
-      const date = new Date(start);
-      date.setDate(start.getDate() + day);
-      
-      intakeDates.push(date.toLocaleDateString("ko-KR")); 
-    }
-
-    return intakeDates;
-  };
-
-  const drugIntakeDates = calculateDrugIntakeDates(startDate, duration);
+  const { itemName, dailyFrequency, startDate, endDate, image, typeName } =
+    item;
 
   return (
-  <View style={styles.card}>
-    <View style={styles.contentContainer}>
-      <View style={styles.imageContainer}>
-        {image && <Image source={{ uri: image }} style={styles.image} />}
-      </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>이름 {medicineName}</Text>
-        <View style={styles.periodContainer}>
-          <FontAwesome name="calendar" size={12} color="#6a6c6c" style={styles.calendarIcon} />
-          <Text style={styles.period}> <Text style={styles.lightText}>{startDate} ~ {endDate}</Text> | <Text style={styles.boldText}>총{duration}일</Text></Text>
+    <View style={styles.card}>
+      <View style={styles.contentContainer}>
+        {image && (
+          <View style={styles.imageContainer}>
+            <Image source={{ uri: image }} style={styles.image} />
+          </View>
+        )}
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>이름: {itemName}</Text>
+          <Text style={styles.text}>일일 투여 횟수: {dailyFrequency}</Text>
+          <Text style={styles.text}>시작일: {startDate}</Text>
+          <Text style={styles.text}>종료일: {endDate}</Text>
+          <Text style={styles.text}>분류: {typeName}</Text>
         </View>
-        <Text style={styles.boldText}>위험 분류 {typeName}</Text>
       </View>
     </View>
-  </View>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    padding: 20,
-    elevation: 5,
-    flexDirection: 'row', 
-    alignItems: 'center',
+    backgroundColor: "#FFFFFF",
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
   },
   contentContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-start' 
+    flexDirection: "row",
+    alignItems: "center",
   },
   imageContainer: {
     marginRight: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   image: {
-    width: 80, 
-    height: 60, 
-    resizeMode: "cover",
-    borderRadius: 5
-  },
-  icon: {
-    width: 68, 
-    height: 19, 
-    marginTop: 5
-  },
-  statusText: {
-    marginTop: 8,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   textContainer: {
     flex: 1,
-    alignItems: 'flex-start'
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5, 
   },
-  periodContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 5,
+  text: {
+    fontSize: 14,
   },
-  calendarIcon: {
-    marginRight: 5,
-  },
-  period: {
-    fontSize: 12,
-    marginBottom: 5,
-  },
-  lightText: {
-    color: '#6a6c6c', 
-    fontSize: 12,
-  },
-  boldText: {
-    fontWeight: 'bold',
-    color: '#171717', 
-  }
 });
 
 export default DrugRecordCard;

@@ -85,8 +85,7 @@ const ImagePickerComponent = ({ navigation }) => {
       style={[styles.cameraButton, styles.greenButton]}
       onPress={pickImageAndSend}
     >
-      <Text style={styles.buttonText}>이미지로</Text>
-      <Text style={styles.buttonText}>분석하기</Text>
+      <Text style={styles.buttonText}>갤러리 이미지로 분석하기</Text>
     </TouchableOpacity>
   );
 };

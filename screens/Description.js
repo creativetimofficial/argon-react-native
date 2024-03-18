@@ -4,7 +4,7 @@ import axios from "axios";
 import { Block } from "galio-framework";
 import DrugRecordCard from "../components/DrugRecordCard";
 import SubTitle from "../components/SubTitle";
-import RiskRecordCard from "../components/RiskRecordCard"; 
+import RiskRecordCard from "../components/RiskRecordCard";
 import { useSelector } from "react-redux"; // Redux 스토어의 상태에 접근하기 위해 사용
 
 const { width } = Dimensions.get("screen");
@@ -56,6 +56,8 @@ function Description() {
         )}
 
         <SubTitle title="복용 기록" iconName="stethoscope" />
+      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Block flex style={{ marginTop: 20, width: width - 40 }}>
           {hasNoRecords ? (
             <View style={styles.noRecordsContainer}>

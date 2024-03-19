@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
   ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
   Button,
 } from "react-native";
-import ModalComponent from "./ModalComponent"; // 모달 컴포넌트 임포트
-import { useState, useLayoutEffect, useEffect } from "react";
-import axios from "axios";
+import ModalComponent from "./ModalComponent";
+import { addRecord } from "../store/actions/recordActions";
 
+// decodeHtmlEntity 함수를 적용하여 출력
+const renderTextWithNewLines = (text) => {
+  const formattedText = decodeHtmlEntity(text);
+  return formattedText.split("\n").map((line, index) => (
+    <Text key={index} style={styles.text}>
+      {line}
+    </Text>
+  ));
+};
 
 function decodeHtmlEntity(str) {
   const entities = {
@@ -38,8 +47,11 @@ function decodeHtmlEntity(str) {
   return decodedString;
 }
 
-const DrugCard = ({ item, accessToken }) => {
-  const { itemName, efficiency, warn, sideEffect, image, typeName } = item;
+
+// 컴포넌트의 props에서 item을 받아오도록 수정
+const DrugCard = ({ item }) => {
+  const { itemName, image, efficiency, warn, sideEffect, typeName } = item; // item 객체에서 필요한 데이터 추출
+  const accessToken = useSelector((state) => state.auth.accessToken); // Redux 스토어에서 accessToken 가져오기
 
   const [modalVisible, setModalVisible] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
@@ -47,47 +59,16 @@ const DrugCard = ({ item, accessToken }) => {
   const [isTaking, setIsTaking] = useState(true);
   const [timesPerDay, setTimesPerDay] = useState(1);
 
+  const dispatch = useDispatch();
+
+  const onSubmit = (newRecord) => {
+    // newRecord 객체 구조를 확인하고 적절히 구성해야 함
+    dispatch(addRecord({ ...newRecord, accessToken })); // Redux 액션 디스패치
+    setModalVisible(false);
+  };
+
   // 모달을 열고 닫는 함수
   const toggleModal = () => setModalVisible(!modalVisible);
-
-  // ModalComponent 내부의 onSubmit 함수 수정
-  const onSubmit = () => {
-    // 여기서 item.itemName을 직접 참조하거나, 다른 방법으로 drugName 값을 설정해야 합니다.
-    const drugName = itemName; // itemName이 이 컨텍스트에서 사용 가능한지 확인하세요.
-
-    const payload = {
-      medicineName: drugName,
-      dailyFrequency: timesPerDay,
-      duration: Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)), // 날짜 차이를 일(day) 단위로 계산
-      isActive: isTaking,
-      startDate: startDate.toISOString(), // ISO 문자열 형식으로 변환
-      endDate: endDate.toISOString(), // ISO 문자열 형식으로 변환
-    };
-
-    axios
-      .post("http://35.216.104.91:8080/medicine/save", payload, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`, 
-        },
-      })
-      .then((response) => {
-        console.log("Success:", response.data);
-        setModalVisible(false);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
-  // decodeHtmlEntity 함수를 적용하여 출력
-  const renderTextWithNewLines = (text) => {
-    const formattedText = decodeHtmlEntity(text);
-    return formattedText.split("\n").map((line, index) => (
-      <Text key={index} style={styles.text}>
-        {line}
-      </Text>
-    ));
-  };
 
   return (
     <ScrollView style={styles.card}>
@@ -128,18 +109,18 @@ const DrugCard = ({ item, accessToken }) => {
         isTaking={isTaking}
         onSubmit={onSubmit}
         timesPerDay={timesPerDay}
-        onStartDateChange={(event, date) => setStartDate(date)}
-        onEndDateChange={(event, date) => setEndDate(date)}
+        onStartDateChange={setStartDate}
+        onEndDateChange={setEndDate}
         onTakingPress={() => setIsTaking(true)}
         offTakingPress={() => setIsTaking(false)}
-        onTimesPerDayChange={(itemValue, itemIndex) =>
-          setTimesPerDay(itemValue)
-        }
-        accessToken={accessToken} // accessToken을 prop으로 추가
+        onTimesPerDayChange={setTimesPerDay}
+        // accessToken을 ModalComponent에 전달할 필요 없음
       />
     </ScrollView>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   card: {

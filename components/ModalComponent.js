@@ -31,7 +31,12 @@ const ModalComponent = (props) => {
             <Text style={styles.modalSubtitle}>복용시작일:</Text>
             <DateTimePicker
               value={props.startDate}
-              onChange={props.onStartDateChange}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                const currentDate = selectedDate || props.startDate;
+                props.onStartDateChange(currentDate);
+              }}
             />
           </View>
 
@@ -39,7 +44,12 @@ const ModalComponent = (props) => {
             <Text style={styles.modalSubtitle}>복용마감일:</Text>
             <DateTimePicker
               value={props.endDate}
-              onChange={props.onEndDateChange}
+              mode="date"
+              display="default"
+              onChange={(event, selectedDate) => {
+                const currentDate = selectedDate || props.endDate;
+                props.onEndDateChange(currentDate);
+              }}
             />
           </View>
 

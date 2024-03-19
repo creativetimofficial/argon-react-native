@@ -25,6 +25,7 @@
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/stack": "^6.3.20",
+    "@reduxjs/toolkit": "^2.2.1",
     "@use-expo/font": "^2.0.0",
     "axios": "^1.6.3",
     "expo": "^49.0.22",
@@ -59,6 +60,7 @@
     "react-redux": "^9.1.0",
     "redux": "^5.0.1",
     "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^3.1.0",
     "util": "^0.12.5",
     "xml2js": "^0.6.2"
   },

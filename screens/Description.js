@@ -1,67 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { ScrollView, StyleSheet, Dimensions, Text, View } from "react-native";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { Block } from "galio-framework";
 import DrugRecordCard from "../components/DrugRecordCard";
 import SubTitle from "../components/SubTitle";
 import RiskRecordCard from "../components/RiskRecordCard";
-import { useSelector } from "react-redux"; // Redux 스토어의 상태에 접근하기 위해 사용
+import { fetchRecords } from "../store/actions/recordActions";
 
-const { width } = Dimensions.get("screen");
-
-function Description() {
-  const [records, setRecords] = useState({
-    medicineRecords: [],
-    riskRecords: [],
-  });
-
-  const accessToken = useSelector((state) => state.auth.accessToken);
+const Description = () => {
+  const dispatch = useDispatch();
+  // useSelector로 상태를 가져올 때 안전하게 접근하기 위해 기본값 설정
+  const { riskRecords = [], medicineRecords = [] } = useSelector(
+    (state) => state.records.records || {}
+  );
 
   useEffect(() => {
-    const fetchRecords = async () => {
-      try {
-        const response = await axios.get("http://35.216.104.91:8080/record", {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        setRecords(response.data);
-      } catch (error) {
-        console.error(
-          "Error fetching records: ",
-          error.response ? error.response.data : error
-        );
-      }
-    };
-
-    if (accessToken) {
-      fetchRecords();
-    }
-  }, [accessToken]);
-
-  // Check if there are no medicine records
-  const hasNoRecords = records.medicineRecords.length === 0;
+    dispatch(fetchRecords());
+  }, [dispatch]);
 
   return (
     <Block flex center>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {/* Render warning cards for risk records */}
-        {records.riskRecords.length > 0 && (
+        {riskRecords.length > 0 && (
           <>
             <View style={{ marginVertical: 10 }}></View>
             <SubTitle title="경고" iconName="warning" />
-            {records.riskRecords.map((record, index) => (
+            {riskRecords.map((record, index) => (
               <RiskRecordCard key={`risk-${index}`} record={record} />
             ))}
           </>
         )}
 
         <SubTitle title="복용 기록" iconName="stethoscope" />
-
-        <Block
-          flex
-          style={{ marginTop: 20, alignItems: "center" }}>
-          {hasNoRecords ? (
+        <Block flex style={{ marginTop: 20, alignItems: "center" }}>
+          {medicineRecords.length === 0 ? (
             <View style={styles.noRecordsContainer}>
               <Text style={styles.noRecordsText}>
                 저장된 약물 정보가 없습니다.
@@ -71,15 +43,15 @@ function Description() {
               </Text>
             </View>
           ) : (
-            records.medicineRecords.map((record, index) => (
-              <DrugRecordCard key={index} item={record} />
+            medicineRecords.map((record, index) => (
+              <DrugRecordCard key={`med-${index}`} item={record} />
             ))
           )}
         </Block>
       </ScrollView>
     </Block>
   );
-}
+};
 
 const styles = StyleSheet.create({
   noRecordsContainer: {

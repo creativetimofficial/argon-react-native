@@ -22,14 +22,25 @@ function decodeHtmlEntity(str) {
   }, str);
 }
 
-const RiskRecordCard = ({ record }) => {
-  // record.warn 필드에 있는 HTML 엔티티를 디코딩
-  const decodedWarning = decodeHtmlEntity(record.warn);
+  // decodeHtmlEntity 함수를 적용하여 출력
+const renderTextWithNewLines = (text) => {
+  // 디코딩 후 앞뒤 따옴표 제거
+  const formattedText = decodeHtmlEntity(text).replace(/^"|"$/g, "");
+  return formattedText.split("\\n").map((line, index) => (
+    <Text key={index} style={styles.warning}>
+      {line}
+    </Text>
+  ));
+};
 
+
+
+const RiskRecordCard = ({ record }) => {
   return (
     <View style={styles.card}>
       <Text style={styles.title}>{record.itemName}</Text>
-      <Text style={styles.warning}>{decodedWarning}</Text>
+      {/* HTML 엔티티가 디코딩되고 \n으로 줄바꿈 처리된 경고 메시지를 렌더링 */}
+      {renderTextWithNewLines(record.warn)}
     </View>
   );
 };

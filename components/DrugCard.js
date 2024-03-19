@@ -38,7 +38,7 @@ function decodeHtmlEntity(str) {
   return decodedString;
 }
 
-const DrugCard = ({ item }) => {
+const DrugCard = ({ item, accessToken }) => {
   const { itemName, efficiency, warn, sideEffect, image, typeName } = item;
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -65,7 +65,11 @@ const DrugCard = ({ item }) => {
     };
 
     axios
-      .post("http://35.216.104.91:8080/medicine/save", payload)
+      .post("http://35.216.104.91:8080/medicine/save", payload, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`, 
+        },
+      })
       .then((response) => {
         console.log("Success:", response.data);
         setModalVisible(false);
@@ -113,18 +117,17 @@ const DrugCard = ({ item }) => {
           {renderTextWithNewLines(typeName)}
         </>
       )}
-
       <Button title="저장하기" onPress={toggleModal} />
 
       <ModalComponent
         modalVisible={modalVisible}
         onRequestClose={toggleModal}
-        drugName={item.itemName}
+        drugName={itemName}
         startDate={startDate}
         endDate={endDate}
         isTaking={isTaking}
-        timesPerDay={timesPerDay}
         onSubmit={onSubmit}
+        timesPerDay={timesPerDay}
         onStartDateChange={(event, date) => setStartDate(date)}
         onEndDateChange={(event, date) => setEndDate(date)}
         onTakingPress={() => setIsTaking(true)}
@@ -132,6 +135,7 @@ const DrugCard = ({ item }) => {
         onTimesPerDayChange={(itemValue, itemIndex) =>
           setTimesPerDay(itemValue)
         }
+        accessToken={accessToken} // accessToken을 prop으로 추가
       />
     </ScrollView>
   );

@@ -26,11 +26,16 @@ class Profile extends React.Component {
 
   componentDidMount() {
     this.fetchProfileData();
-    console.log("accessToken",this.props.accessToken)
+    console.log("accessToken", this.props.accessToken);
   }
 
   fetchProfileData = async () => {
     const { accessToken } = this.props; // Redux 스토어에서 액세스 토큰을 props로 받아옵니다.
+
+    if (!accessToken) {
+      console.log("No accessToken found. User is not logged in.");
+      return; // Early return if no accessToken is present
+    }
 
     try {
       const response = await axios.get("http://35.216.104.91:8080/profile", {
@@ -70,14 +75,25 @@ class Profile extends React.Component {
                     style={styles.avatar}
                   />
                 </Block>
-                <Block style={styles.info}>
-                </Block>
+                <Block style={styles.info}></Block>
                 <Block flex>
-                <Block middle style={styles.nameInfo}>
-                    <Text bold size={28} color="#435334" style={{ fontFamily: 'KoPubWorldDotum_Pro_Bold' }}>
+                  <Block middle style={styles.nameInfo}>
+                    <Text
+                      bold
+                      size={28}
+                      color="#435334"
+                      style={{ fontFamily: "KoPubWorldDotum_Pro_Bold" }}
+                    >
                       {nickname || "로그인이 필요합니다"}
                     </Text>
-                    <Text size={12} color="#435334" style={{ marginTop: 10, fontFamily: 'KoPubWorldDotum_Pro_Light' }}>
+                    <Text
+                      size={12}
+                      color="#435334"
+                      style={{
+                        marginTop: 10,
+                        fontFamily: "KoPubWorldDotum_Pro_Light",
+                      }}
+                    >
                       나만의 단골 약사로 약물 위험에서 벗어나세요!
                     </Text>
                   </Block>

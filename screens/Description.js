@@ -48,6 +48,7 @@ function Description() {
         {/* Render warning cards for risk records */}
         {records.riskRecords.length > 0 && (
           <>
+            <View style={{ marginVertical: 10 }}></View>
             <SubTitle title="경고" iconName="warning" />
             {records.riskRecords.map((record, index) => (
               <RiskRecordCard key={`risk-${index}`} record={record} />
@@ -56,9 +57,10 @@ function Description() {
         )}
 
         <SubTitle title="복용 기록" iconName="stethoscope" />
-        </ScrollView>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Block flex style={{ marginTop: 20, width: width - 40 }}>
+
+        <Block
+          flex
+          style={{ marginTop: 20, alignItems: "center" }}>
           {hasNoRecords ? (
             <View style={styles.noRecordsContainer}>
               <Text style={styles.noRecordsText}>

@@ -9,6 +9,8 @@ import { Block } from "galio-framework";
 import CustomDrawerContent from "./Menu";
 import Elements from "../screens/Elements";
 // screens
+import Description from "../screens/Description";
+import MedicineDetailScreen from "../screens/MedicineDetailScreen";
 import Home from "../screens/Home";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
@@ -24,84 +26,6 @@ const { width } = Dimensions.get("screen");
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
-
-function ElementsStack(props) {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen
-        name="Elements"
-        component={Elements}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Elements" navigation={navigation} scene={scene} />
-          ),
-          cardStyle: { backgroundColor: "#F8F9FE" },
-        }}
-      />
-      <Stack.Screen
-        name="Pro"
-        component={Pro}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title=""
-              back
-              white
-              transparent
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          headerTransparent: true,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function ArticlesStack(props) {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        mode: "card",
-        headerShown: "screen",
-      }}
-    >
-      <Stack.Screen
-        name="Articles"
-        component={Articles}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header title="Articles" navigation={navigation} scene={scene} />
-          ),
-          cardStyle: { backgroundColor: "#F8F9FE" },
-        }}
-      />
-      <Stack.Screen
-        name="Pro"
-        component={Pro}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title=""
-              back
-              white
-              transparent
-              navigation={navigation}
-              scene={scene}
-            />
-          ),
-          headerTransparent: true,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
 
 function ProfileStack(props) {
   return (
@@ -120,7 +44,7 @@ function ProfileStack(props) {
             <Header
               transparent
               white
-              title="Profile"
+              title="프로필"
               navigation={navigation}
               scene={scene}
             />
@@ -150,6 +74,7 @@ function ProfileStack(props) {
   );
 }
 
+
 function HomeStack(props) {
   return (
     <Stack.Navigator
@@ -164,7 +89,7 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Home"
+              title="홈"
               search
               options
               navigation={navigation}
@@ -210,7 +135,50 @@ export default function OnboardingStack(props) {
           headerTransparent: true,
         }}
       />
+      <Stack.Screen name="Home" component={HomeStack}/>
       <Stack.Screen name="App" component={AppStack} />
+    </Stack.Navigator>
+  );
+}
+// Updated DescriptionStack to include MedicineDetailScreen
+function DescriptionStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Description"
+      screenOptions={{
+        mode: "card",
+        headerShown: "screen",
+      }}
+    >
+      <Stack.Screen
+        name="Description"
+        component={Description}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header 
+              title="복용 기록 확인" 
+              navigation={navigation} 
+              scene={scene} 
+            />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" },
+        }}
+      />
+      {/* Add MedicineDetailScreen to the stack */}
+      <Stack.Screen
+        name="MedicineDetail"
+        component={MedicineDetailScreen}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="약물 상세 정보"
+              back
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -247,36 +215,22 @@ function AppStack(props) {
       initialRouteName="Home"
     >
       <Drawer.Screen
-        name="Home"
+        name="홈"
         component={HomeStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Profile"
+        name="프로필"
         component={ProfileStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Account"
-        component={Register}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Elements"
-        component={ElementsStack}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Drawer.Screen
-        name="Articles"
-        component={ArticlesStack}
+        name="복용 기록 확인"
+        component={DescriptionStack}
         options={{
           headerShown: false,
         }}

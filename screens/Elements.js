@@ -363,10 +363,10 @@ class Elements extends React.Component {
         <Text bold size={16} style={styles.title}>
           Navigation
         </Text>
-        <Block>
+       <Block>
           <Block style={{ marginBottom: theme.SIZES.BASE }}>
             <Header back title="Title" navigation={this.props.navigation} />
-          </Block>
+          </Block> 
 
           <Block style={{ marginBottom: theme.SIZES.BASE }}>
             <Header

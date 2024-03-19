@@ -1,5 +1,6 @@
 import { Block, Text, theme } from "galio-framework";
-import { Image, ScrollView, StyleSheet } from "react-native";
+import { View, Image, ScrollView, StyleSheet } from "react-native";
+import { Icon } from 'react-native-vector-icons/MaterialIcons'; 
 
 import { DrawerItem as DrawerCustomItem } from "../components";
 import Images from "../constants/Images";
@@ -13,14 +14,16 @@ function CustomDrawerContent({
   state,
   ...rest
 }) {
-  const screens = ["Home", "Profile", "Account", "Elements", "Articles"];
+  const screens = ["홈", "복용 기록 확인", "프로필"];
+  const focusedColor = "#67B779";
+
   return (
     <Block
       style={styles.container}
       forceInset={{ top: "always", horizontal: "never" }}
     >
       <Block flex={0.06} style={styles.header}>
-        <Image styles={styles.logo} source={Images.Logo} />
+        <Image styles={styles.logo} source={Images.Logo}/>
       </Block>
       <Block flex style={{ paddingLeft: 8, paddingRight: 14 }}>
         <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
@@ -30,26 +33,12 @@ function CustomDrawerContent({
                 title={item}
                 key={index}
                 navigation={navigation}
-                focused={state.index === index ? true : false}
+                focused={state.routeNames[state.index] === item}
+                focusedColor={focusedColor}
               />
             );
           })}
-          <Block
-            flex
-            style={{ marginTop: 24, marginVertical: 8, paddingHorizontal: 8 }}
-          >
-            <Block
-              style={{
-                borderColor: "rgba(0,0,0,0.2)",
-                width: "100%",
-                borderWidth: StyleSheet.hairlineWidth,
-              }}
-            />
-            <Text color="#8898AA" style={{ marginTop: 16, marginLeft: 8 }}>
-              DOCUMENTATION
-            </Text>
-          </Block>
-          <DrawerCustomItem title="Getting Started" navigation={navigation} />
+          <DrawerCustomItem/>
         </ScrollView>
       </Block>
     </Block>
